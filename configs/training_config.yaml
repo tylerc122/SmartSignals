@@ -1,0 +1,39 @@
+# Training Configuration
+
+# Environment Settings
+environment:
+  name: "SingleIntersection"
+  sumo_config: "sumo_scenarios/single_intersection.sumocfg"
+  episode_length: 3600 # seconds (1 hour simulation)
+  step_size: 5 # SUMO simulation step size in seconds
+
+# RL Algorithm Configuration
+algorithm:
+  name: "PPO" # Proximal Policy Optimization, a type of RL algorithm, gradual improvements, good for continuous actions
+  learning_rate: 0.0003 # How fast the agent learns (smaller = more stable) standard for PPO algo
+  total_timesteps: 100000 # Total training steps i.e how long to train the AI
+  batch_size: 64 # Number of experiences processed at once i.e how many experiences to process together
+  n_epochs: 10 # Training epochs per update i.e how many times to repaly teh same batch of experiences, too low and no learning too much and overfitting
+
+# Neural Network Architecture
+network:
+  policy_layers: [64, 64] # Hidden layers for the policy network
+  value_layers: [64, 64] # Hidden layers for the value network
+  activation: "tanh" # Activation function, non-linearity, the "thinking" part of the AI
+
+# Reward Function Parameters
+rewards:
+  waiting_time_penalty: -1.0 # Penalty per second of vehicle waiting
+  throughput_reward: 0.1 # Reward per vehicle that passes through
+  queue_length_penalty: -0.1 # Penalty per vehicle in queue
+
+# Training Schedule
+training:
+  save_frequency: 10000 # Save model every N timesteps, checkpoint
+  eval_frequency: 5000 # Evaluate model every N timesteps
+  log_frequency: 1000 # Log metrics every N timesteps
+
+# Evaluation Settings
+evaluation:
+  episodes: 10 # Number of episodes for evaluation
+  render: false # Whether to visualize during evaluation

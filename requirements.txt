@@ -1,0 +1,23 @@
+# Core RL Dependencies
+gymnasium>=0.28.1          # Modern replacement for OpenAI Gym - provides standard RL environment interface
+stable-baselines3>=2.0.0   # State-of-the-art RL algorithms (PPO, A2C, DQN, etc.)
+torch>=2.0.0              # PyTorch for neural networks used in RL agents
+
+# SUMO Traffic Simulation
+traci>=1.15.0             # Python API to control SUMO traffic simulator
+sumolib>=1.15.0           # SUMO utilities for network parsing
+
+# Data Analysis & Visualization
+numpy>=1.24.0             # Numerical computing
+pandas>=2.0.0             # Data manipulation and analysis
+matplotlib>=3.7.0         # Plotting and visualization
+seaborn>=0.12.0           # Statistical data visualization
+
+# Configuration & Utilities
+pyyaml>=6.0               # For reading config files
+tqdm>=4.65.0              # Progress bars during training
+
+# Development & Testing
+pytest>=7.0.0             # Testing framework
+black>=23.0.0             # Code formatter
+tensorboard>=2.12.0       # For monitoring training progress 
