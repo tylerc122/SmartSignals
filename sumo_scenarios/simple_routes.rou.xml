@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Simple Routes for Generated 2x2 Grid Network -->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- Vehicle Types -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="13.89" guiShape="passenger"/>
+    
+    <!-- Simple Route Definitions -->
+    <route id="north_south" edges="A1A0 A0B0"/>  <!-- From north through A0 to east -->
+    <route id="south_north" edges="A0A1 A1B1"/>  <!-- From A0 north to east -->
+    <route id="east_west" edges="B0A0 A0A1"/>    <!-- From east through A0 to north -->
+    <route id="west_east" edges="A0B0 B0B1"/>    <!-- From A0 east to north -->
+
+    <!-- Traffic Flows - Light traffic for testing -->
+    <flow id="flow_ns" route="north_south" begin="0" end="300" vehsPerHour="120" type="car"/>
+    <flow id="flow_sn" route="south_north" begin="0" end="300" vehsPerHour="120" type="car"/>
+    <flow id="flow_ew" route="east_west" begin="0" end="300" vehsPerHour="100" type="car"/>
+    <flow id="flow_we" route="west_east" begin="0" end="300" vehsPerHour="100" type="car"/>
+
+</routes> 
