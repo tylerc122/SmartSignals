@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+
+    <!-- Vehicle Types -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="13.89" guiShape="passenger"/>
+    
+    <!-- Routes from North -->
+    <route id="north_to_south" edges="n2c c2s"/>  <!-- Straight through -->
+    <route id="north_to_east" edges="n2c c2e"/>   <!-- Turn right -->
+    <route id="north_to_west" edges="n2c c2w"/>   <!-- Turn left -->
+    
+    <!-- Routes from South -->
+    <route id="south_to_north" edges="s2c c2n"/>  <!-- Straight through -->
+    <route id="south_to_west" edges="s2c c2w"/>   <!-- Turn right -->
+    <route id="south_to_east" edges="s2c c2e"/>   <!-- Turn left -->
+    
+    <!-- Routes from East -->
+    <route id="east_to_west" edges="e2c c2w"/>    <!-- Straight through -->
+    <route id="east_to_north" edges="e2c c2n"/>   <!-- Turn right -->
+    <route id="east_to_south" edges="e2c c2s"/>   <!-- Turn left -->
+    
+    <!-- Routes from West -->
+    <route id="west_to_east" edges="w2c c2e"/>    <!-- Straight through -->
+    <route id="west_to_south" edges="w2c c2s"/>   <!-- Turn right -->
+    <route id="west_to_north" edges="w2c c2n"/>   <!-- Turn left -->
+
+    <!-- Traffic Flows - Different traffic from each direction -->
+    <!-- North-bound traffic -->
+    <flow id="flow_n2s" route="north_to_south" begin="0" end="300" vehsPerHour="200" type="car"/>
+    <flow id="flow_n2e" route="north_to_east" begin="0" end="300" vehsPerHour="100" type="car"/>
+    <flow id="flow_n2w" route="north_to_west" begin="0" end="300" vehsPerHour="80" type="car"/>
+    
+    <!-- South-bound traffic -->
+    <flow id="flow_s2n" route="south_to_north" begin="0" end="300" vehsPerHour="180" type="car"/>
+    <flow id="flow_s2w" route="south_to_west" begin="0" end="300" vehsPerHour="90" type="car"/>
+    <flow id="flow_s2e" route="south_to_east" begin="0" end="300" vehsPerHour="70" type="car"/>
+    
+    <!-- East-bound traffic -->
+    <flow id="flow_e2w" route="east_to_west" begin="0" end="300" vehsPerHour="160" type="car"/>
+    <flow id="flow_e2n" route="east_to_north" begin="0" end="300" vehsPerHour="120" type="car"/>
+    <flow id="flow_e2s" route="east_to_south" begin="0" end="300" vehsPerHour="60" type="car"/>
+    
+    <!-- West-bound traffic -->
+    <flow id="flow_w2e" route="west_to_east" begin="0" end="300" vehsPerHour="150" type="car"/>
+    <flow id="flow_w2s" route="west_to_south" begin="0" end="300" vehsPerHour="110" type="car"/>
+    <flow id="flow_w2n" route="west_to_north" begin="0" end="300" vehsPerHour="50" type="car"/>
+
+</routes> 

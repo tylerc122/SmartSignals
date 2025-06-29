@@ -14,266 +14,208 @@ from typing import Dict, Any, Tuple, Optional
 
 class SumoTrafficEnv(gym.Env):
     """
-    Custom Gymnasium environment for traffic light control using SUMO simulation.
+    SUMO Traffic Signal Control Environment for Reinforcement Learning
     
-    This environment allows an RL agent to control traffic signals at an intersection
-    by observing traffic state and taking actions to change signal phases.
+    This environment bridges SUMO traffic simulation with RL algorithms.
+    The agent controls traffic light phases at an intersection to minimize
+    vehicle waiting times.
     """
     
     def __init__(self, 
-                 sumo_config_path: str,
-                 episode_length: int = 300,
-                 step_size: int = 5,
-                 render_mode: Optional[str] = None):
+                 sumo_config_file="sumo_scenarios/cross_intersection.sumocfg",
+                 step_duration=5,
+                 episode_length=60):
         """
         Initialize the SUMO traffic environment.
         
         Args:
-            sumo_config_path: Path to SUMO configuration file (.sumocfg)
-            episode_length: Length of each episode in simulation seconds
-            step_size: Number of simulation seconds per environment step
-            render_mode: Rendering mode ('human' for GUI, None for headless)
+            sumo_config_file: Path to SUMO configuration file
+            step_duration: Seconds of simulation per RL step
+            episode_length: Length of episode in simulation seconds
         """
         super().__init__()
         
         # Environment parameters
-        self.sumo_config_path = sumo_config_path
+        self.sumo_config_file = sumo_config_file
+        self.step_duration = step_duration
         self.episode_length = episode_length
-        self.step_size = step_size
-        self.render_mode = render_mode
+        self.current_step = 0
         
-        # SUMO connection
-        self.sumo_connected = False
-        self.simulation_step = 0
+        # Traffic light configuration (updated for cross intersection)
+        self.traffic_light_id = "center"  # Updated for our new intersection
+        self.green_phases = [0, 2]  # Phases that allow traffic movement (not yellow)
         
-        # Traffic light ID (assuming single intersection)
-        self.traffic_light_id = "B1"  # Traffic light ID from netconvert
-        
-        # Define action space: 4 discrete actions for 4-way intersection
-        # 0: North-South Green, East-West Red
-        # 1: East-West Green, North-South Red  
-        # 2: North-South + Left Turn Green
-        # 3: East-West + Left Turn Green
-        self.action_space = spaces.Discrete(4)
-        
-        # Define observation space
-        # State vector contains:
-        # - Number of waiting vehicles per lane (4 lanes) = 4 values
-        # - Average waiting time per lane (4 lanes) = 4 values  
-        # - Current traffic light phase (one-hot encoded, 4 phases) = 4 values
-        # Total: 12 dimensional observation space
+        # State and action spaces
+        # State: [waiting_vehicles_per_lane(8), avg_waiting_time_per_lane(8), phase_one_hot(4)]
+        # 8 lanes: n2c, e2c, s2c, w2c (incoming) + c2n, c2e, c2s, c2w (outgoing)
         self.observation_space = spaces.Box(
-            low=0.0,
-            high=np.inf,
-            shape=(12,),
-            dtype=np.float32
+            low=0, high=100, shape=(20,), dtype=np.float32
         )
         
-        # State tracking
-        self.total_waiting_time = 0.0
-        self.vehicle_count = 0
+        # Action: 4 discrete actions for 4 possible phases
+        self.action_space = spaces.Discrete(4)
         
-    def _start_sumo(self) -> None:
-        """Start SUMO simulation with appropriate configuration."""
-        if self.sumo_connected:
-            return
+        # SUMO connection
+        self.sumo_cmd = None
+        self.is_connected = False
+        
+    def _start_sumo(self):
+        """Start SUMO simulation."""
+        if self.is_connected:
+            self._close_sumo()
             
-        # Determine SUMO command based on render mode
-        if self.render_mode == "human":
-            sumo_cmd = ["sumo-gui", "-c", self.sumo_config_path]
-        else:
-            sumo_cmd = ["sumo", "-c", self.sumo_config_path, "--no-warnings"]
-            
+        # Use headless SUMO for training (can change to sumo-gui for visualization)
+        self.sumo_cmd = ["sumo", "-c", self.sumo_config_file, 
+                         "--no-step-log", "--no-warnings"]
+        
         # Start SUMO
-        traci.start(sumo_cmd)
-        self.sumo_connected = True
+        traci.start(self.sumo_cmd)
+        self.is_connected = True
         
-        # Auto-detect traffic light ID
-        traffic_lights = traci.trafficlight.getIDList()
-        if traffic_lights:
-            self.traffic_light_id = traffic_lights[0]
-        else:
-            raise ValueError("No traffic lights found in SUMO simulation")
-            
-    def _get_observation(self) -> np.ndarray:
+        # Verify traffic light exists
+        if self.traffic_light_id not in traci.trafficlight.getIDList():
+            available_tls = traci.trafficlight.getIDList()
+            raise ValueError(f"Traffic light '{self.traffic_light_id}' not found. "
+                           f"Available traffic lights: {available_tls}")
+    
+    def _close_sumo(self):
+        """Close SUMO simulation."""
+        if self.is_connected:
+            traci.close()
+            self.is_connected = False
+    
+    def _get_state(self):
         """
-        Get current state observation from SUMO simulation.
+        Get current state of the intersection.
         
         Returns:
-            12-dimensional state vector containing traffic information
+            np.array: State vector containing vehicle counts, waiting times, and phase info
         """
-        if not self.sumo_connected:
-            return np.zeros(12, dtype=np.float32)
-            
-        # Get lane IDs connected to the intersection
-        lanes = traci.trafficlight.getControlledLanes(self.traffic_light_id)
+        # Get all lanes connected to the intersection
+        incoming_lanes = ["n2c_0", "e2c_0", "s2c_0", "w2c_0"]  # Updated for cross intersection
+        outgoing_lanes = ["c2n_0", "c2e_0", "c2s_0", "c2w_0"]  # Updated for cross intersection
+        all_lanes = incoming_lanes + outgoing_lanes
         
-        # Initialize observation components
-        waiting_vehicles = np.zeros(4, dtype=np.float32)
-        avg_waiting_times = np.zeros(4, dtype=np.float32)
+        # Vehicle counts per lane
+        vehicle_counts = []
+        waiting_times = []
         
-        # Get traffic data for each lane (limit to 4 main lanes)
-        for i, lane_id in enumerate(lanes[:4]):
-            # Number of waiting vehicles (speed < 0.5 m/s)
-            vehicle_ids = traci.lane.getLastStepVehicleIDs(lane_id)
-            waiting_count = 0
-            total_waiting_time = 0.0
+        for lane in all_lanes:
+            # Number of waiting vehicles
+            waiting_vehicles = traci.lane.getLastStepHaltingNumber(lane)
+            vehicle_counts.append(waiting_vehicles)
             
-            for vehicle_id in vehicle_ids:
-                speed = traci.vehicle.getSpeed(vehicle_id)
-                if speed < 0.5:  # Consider as waiting if speed < 0.5 m/s
-                    waiting_count += 1
-                    waiting_time = traci.vehicle.getWaitingTime(vehicle_id)
-                    total_waiting_time += waiting_time
-                    
-            waiting_vehicles[i] = waiting_count
-            avg_waiting_times[i] = total_waiting_time / max(waiting_count, 1)
-            
-        # Get current traffic light phase (one-hot encoded)
+            # Average waiting time
+            vehicle_ids = traci.lane.getLastStepVehicleIDs(lane)
+            if vehicle_ids:
+                avg_waiting_time = np.mean([traci.vehicle.getWaitingTime(vid) for vid in vehicle_ids])
+            else:
+                avg_waiting_time = 0.0
+            waiting_times.append(avg_waiting_time)
+        
+        # Current traffic light phase (one-hot encoded)
         current_phase = traci.trafficlight.getPhase(self.traffic_light_id)
-        phase_vector = np.zeros(4, dtype=np.float32)
-        if current_phase < 4:  # Ensure phase is within expected range
-            phase_vector[current_phase] = 1.0
-            
-        # Combine all observation components
-        observation = np.concatenate([
-            waiting_vehicles,
-            avg_waiting_times, 
-            phase_vector
-        ])
+        phase_one_hot = np.zeros(4)
+        phase_one_hot[current_phase] = 1.0
         
-        return observation.astype(np.float32)
+        # Combine all state information
+        state = np.array(vehicle_counts + waiting_times + phase_one_hot.tolist(), dtype=np.float32)
         
-    def _calculate_reward(self) -> float:
+        return state
+    
+    def _get_reward(self):
         """
-        Calculate reward based on traffic performance.
-        
-        Uses negative total waiting time as reward to incentivize
-        minimizing vehicle delays.
+        Calculate reward based on traffic efficiency.
         
         Returns:
-            Reward value (higher is better)
+            float: Reward value (negative waiting time)
         """
-        if not self.sumo_connected:
-            return 0.0
-            
-        # Calculate total waiting time across all vehicles
-        total_waiting = 0.0
+        # Get all vehicles in the simulation
         vehicle_ids = traci.vehicle.getIDList()
         
-        for vehicle_id in vehicle_ids:
-            waiting_time = traci.vehicle.getWaitingTime(vehicle_id)
-            total_waiting += waiting_time
-            
-        # Reward is negative waiting time (minimize waiting = maximize reward)
-        reward = -total_waiting
+        # Calculate total waiting time
+        total_waiting_time = sum(traci.vehicle.getWaitingTime(vid) for vid in vehicle_ids)
+        
+        # Reward is negative waiting time (minimize waiting)
+        reward = -total_waiting_time
         
         return reward
-        
-    def _apply_action(self, action: int) -> None:
+    
+    def _apply_action(self, action):
         """
-        Apply the chosen action to the traffic light.
+        Apply traffic light action.
         
         Args:
-            action: Integer action representing traffic light phase
+            action (int): Action to take (0-3 for phases)
         """
-        if not self.sumo_connected:
-            return
-            
-        # Map action to SUMO traffic light phase
-        # Get available phases dynamically
-        try:
-            logic = traci.trafficlight.getAllProgramLogics(self.traffic_light_id)
-            if logic and len(logic) > 0:
-                num_phases = len(logic[0].phases)
-                # Map actions to available phases (cycle through them)
-                target_phase = action % num_phases
-            else:
-                target_phase = 0  # Default to phase 0
-        except:
-            target_phase = 0  # Fallback to phase 0
+        # Get current number of phases
+        num_phases = len(traci.trafficlight.getAllProgramLogics(self.traffic_light_id)[0].phases)
         
+        # Map action to valid phase (handle case where action > num_phases)
+        target_phase = action % num_phases
+        
+        # Set traffic light phase
         traci.trafficlight.setPhase(self.traffic_light_id, target_phase)
-        
-    def reset(self, seed: Optional[int] = None, options: Optional[Dict] = None) -> Tuple[np.ndarray, Dict]:
+    
+    def reset(self, **kwargs):
         """
-        Reset the environment to initial state.
+        Reset the environment.
         
         Returns:
-            Initial observation and info dictionary
+            tuple: (observation, info)
         """
-        super().reset(seed=seed)
-        
-        # Close existing SUMO connection if any
-        if self.sumo_connected:
-            traci.close()
-            self.sumo_connected = False
-            
-        # Start fresh SUMO simulation
+        # Start new SUMO simulation
         self._start_sumo()
         
-        # Reset tracking variables
-        self.simulation_step = 0
-        self.total_waiting_time = 0.0
-        self.vehicle_count = 0
+        # Reset episode tracking
+        self.current_step = 0
         
-        # Get initial observation
-        observation = self._get_observation()
+        # Get initial state
+        initial_state = self._get_state()
         
-        info = {
-            "episode_step": self.simulation_step,
-            "total_vehicles": self.vehicle_count
-        }
-        
-        return observation, info
-        
-    def step(self, action: int) -> Tuple[np.ndarray, float, bool, bool, Dict]:
+        return initial_state, {}
+    
+    def step(self, action):
         """
         Execute one environment step.
         
         Args:
-            action: Action to take (traffic light phase)
+            action (int): Action to take
             
         Returns:
-            Tuple of (observation, reward, terminated, truncated, info)
+            tuple: (observation, reward, terminated, truncated, info)
         """
-        if not self.sumo_connected:
-            raise RuntimeError("SUMO not connected. Call reset() first.")
-            
-        # Apply the action (change traffic light phase)
+        # Apply action
         self._apply_action(action)
         
-        # Advance SUMO simulation for step_size seconds
-        for _ in range(self.step_size):
+        # Run simulation for step_duration seconds
+        for _ in range(self.step_duration):
             traci.simulationStep()
-            self.simulation_step += 1
-            
-        # Get new observation after simulation step
-        observation = self._get_observation()
         
-        # Calculate reward
-        reward = self._calculate_reward()
+        # Get new state and reward
+        new_state = self._get_state()
+        reward = self._get_reward()
         
-        # Check if episode is finished
-        terminated = self.simulation_step >= self.episode_length
-        truncated = False  # We don't use truncation in this environment
+        # Update step counter
+        self.current_step += self.step_duration
         
-        # Gather info
+        # Check if episode is done
+        terminated = self.current_step >= self.episode_length
+        truncated = False
+        
         info = {
-            "episode_step": self.simulation_step,
-            "total_vehicles": len(traci.vehicle.getIDList()) if self.sumo_connected else 0,
-            "reward": reward
+            "step": self.current_step,
+            "total_waiting_time": -reward,
+            "current_phase": traci.trafficlight.getPhase(self.traffic_light_id)
         }
         
-        return observation, reward, terminated, truncated, info
-        
-    def render(self) -> None:
-        """Render the environment (SUMO GUI handles this)."""
-        # SUMO GUI handles rendering when render_mode="human"
-        pass
-        
-    def close(self) -> None:
-        """Clean up SUMO connection."""
-        if self.sumo_connected:
-            traci.close()
-            self.sumo_connected = False 
+        return new_state, reward, terminated, truncated, info
+    
+    def close(self):
+        """Close the environment."""
+        self._close_sumo()
+    
+    def render(self, mode='human'):
+        """Render the environment (SUMO GUI)."""
+        # SUMO handles its own rendering
+        pass 
