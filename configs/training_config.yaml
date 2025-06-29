@@ -3,8 +3,8 @@
 # Environment Settings
 environment:
   name: "SingleIntersection"
-  sumo_config: "sumo_scenarios/single_intersection.sumocfg"
-  episode_length: 3600 # seconds (1 hour simulation)
+  sumo_config: "sumo_scenarios/simple_test.sumocfg"
+  episode_length: 300 # seconds (5 minute episodes for faster training)
   step_size: 5 # SUMO simulation step size in seconds
 
 # RL Algorithm Configuration
