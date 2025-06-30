@@ -70,12 +70,20 @@ class SumoTrafficEnv(gym.Env):
         # "There are 4 cars waiting north-to-center with average wait of 12 seconds"
         # "There are 0 cars waiting east to center"
         # "Current phase is 0 i.e north-south green, east-west red" ETC.
+        # E.G:
+        """
+  obs = [3, 1, 0, 2,    # vehicles waiting (N,E,S,W incoming)
+        0, 0, 0, 0,    # vehicles waiting (N,E,S,W outgoing)  
+        12, 5, 0, 8,   # waiting times (N,E,S,W incoming)
+        0, 0, 0, 0,    # waiting times (N,E,S,W outgoing)
+        1, 0, 0, 0]    # phase one-hot: Phase 0 is active i.e north-south green, east-west red
+        """
         # Based on the state vector, agent will decide to change the traffic light phase to 
         self.observation_space = spaces.Box(
             low=0, high=100, shape=(20,), dtype=np.float32
         )
         
-        # Action: 4 discrete actions for 4 possible phases
+        # Action: 4 discrete actions for 4 possible light phases
         self.action_space = spaces.Discrete(4)
         
         # SUMO connection
@@ -97,7 +105,7 @@ class SumoTrafficEnv(gym.Env):
         
         try:
             if is_gui:
-                print("🎬 Starting SUMO GUI - this may take a moment...")
+                print("Starting SUMO GUI")
                 import time
                 time.sleep(2)  # Give GUI time to start
             
@@ -113,7 +121,7 @@ class SumoTrafficEnv(gym.Env):
         except Exception as e:
             print(f"❌ Failed to start SUMO: {e}")
             if is_gui:
-                print("💡 Try: Make sure XQuartz is running and no other SUMO instances are open")
+                print("XQuartz?")
             raise
         
         # Verify traffic light exists
@@ -141,8 +149,8 @@ class SumoTrafficEnv(gym.Env):
             np.array: State vector containing vehicle counts, waiting times, and phase info
         """
         # Get all lanes connected to the intersection
-        incoming_lanes = ["n2c_0", "e2c_0", "s2c_0", "w2c_0"]  # Updated for cross intersection
-        outgoing_lanes = ["c2n_0", "c2e_0", "c2s_0", "c2w_0"]  # Updated for cross intersection
+        incoming_lanes = ["n2c_0", "e2c_0", "s2c_0", "w2c_0"]
+        outgoing_lanes = ["c2n_0", "c2e_0", "c2s_0", "c2w_0"]
         all_lanes = incoming_lanes + outgoing_lanes
         
         # Vehicle counts per lane
