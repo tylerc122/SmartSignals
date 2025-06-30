@@ -44,11 +44,33 @@ class SumoTrafficEnv(gym.Env):
         
         # Traffic light configuration (updated for cross intersection)
         self.traffic_light_id = "center"  # Updated for our new intersection
-        self.green_phases = [0, 2]  # Phases that allow traffic movement (not yellow)
+        # Phases that allow traffic movement (not yellow)
+        # 0 -> north-south green east-west red, 
+        # 2 -> east-west green north-south red
+        # Phases 1 & 3 are yellow transition phases
+        # This tells agent 0 and 2 are productive:
+        self.green_phases = [0, 2]  
         
         # State and action spaces
-        # State: [waiting_vehicles_per_lane(8), avg_waiting_time_per_lane(8), phase_one_hot(4)]
-        # 8 lanes: n2c, e2c, s2c, w2c (incoming) + c2n, c2e, c2s, c2w (outgoing)
+        # n2c_0 = north to center lane
+        # e2c_0 = east to center lane
+        # s2c_0 = south to center lane
+        # w2c_0 = west to center lane
+        # c2n_0 = center to north lane
+        # c2e_0 = center to east lane
+        # c2s_0 = center to south lane
+        # c2w_0 = center to west lane
+        # 8 lanes in total: n2c, e2c, s2c, w2c (incoming) + c2n, c2e, c2s, c2w (outgoing)
+        # 20 dimenstional state vector that our agent receives every step, detailing:
+        # - waiting vehicles per lane
+        # - average waiting time per lane
+        # - current traffic light phase (4 values with one-hot encoded)
+        # i.e -> [waiting_vehicles_per_lane(8), avg_waiting_time_per_lane(8), phase_one_hot(4)]
+        # Essentially, every simulated 5 seconds, the agent receives input along the lines of:
+        # "There are 4 cars waiting north-to-center with average wait of 12 seconds"
+        # "There are 0 cars waiting east to center"
+        # "Current phase is 0 i.e north-south green, east-west red" ETC.
+        # Based on the state vector, agent will decide to change the traffic light phase to 
         self.observation_space = spaces.Box(
             low=0, high=100, shape=(20,), dtype=np.float32
         )
