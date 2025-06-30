@@ -2,8 +2,8 @@
 
 # Environment Settings
 environment:
-  name: "SingleIntersection"
-  sumo_config: "sumo_scenarios/simple_test.sumocfg"
+  name: "CrossIntersection"
+  sumo_config: "sumo_scenarios/cross_intersection.sumocfg"
   episode_length: 300 # seconds (5 minute episodes for faster training)
   step_size: 5 # SUMO simulation step size in seconds
 
