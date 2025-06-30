@@ -1,6 +1,7 @@
 """
-This module creates a Gymnasium-compatible environment that wraps SUMO traffic simulation,
-allowing RL agents to control traffic lights and learn optimal signal timing policies.
+Creates a Gymnasium-compatible environment that wraps SUMO traffic simulation,
+this allows RL agents to control traffic lights and learn optimal signal timing policies,
+the heart of the project.
 """
 
 import gymnasium as gym
@@ -64,19 +65,45 @@ class SumoTrafficEnv(gym.Env):
         if self.is_connected:
             self._close_sumo()
             
-        # Use headless SUMO for training (can change to sumo-gui for visualization)
-        self.sumo_cmd = ["sumo", "-c", self.sumo_config_file, 
-                         "--no-step-log", "--no-warnings"]
+        # Use command if already set (for GUI), otherwise default to headless
+        if self.sumo_cmd is None:
+            self.sumo_cmd = ["sumo", "-c", self.sumo_config_file, 
+                             "--no-step-log", "--no-warnings"]
         
-        # Start SUMO
-        traci.start(self.sumo_cmd)
-        self.is_connected = True
+        # For GUI mode, add extra startup time and error handling
+        is_gui = "sumo-gui" in self.sumo_cmd[0]
+        
+        try:
+            if is_gui:
+                print("🎬 Starting SUMO GUI - this may take a moment...")
+                import time
+                time.sleep(2)  # Give GUI time to start
+            
+            # Start SUMO
+            traci.start(self.sumo_cmd)
+            self.is_connected = True
+            
+            if is_gui:
+                print("✅ SUMO GUI connected successfully!")
+                # Extra pause to let GUI fully initialize
+                time.sleep(1)
+            
+        except Exception as e:
+            print(f"❌ Failed to start SUMO: {e}")
+            if is_gui:
+                print("💡 Try: Make sure XQuartz is running and no other SUMO instances are open")
+            raise
         
         # Verify traffic light exists
-        if self.traffic_light_id not in traci.trafficlight.getIDList():
-            available_tls = traci.trafficlight.getIDList()
-            raise ValueError(f"Traffic light '{self.traffic_light_id}' not found. "
-                           f"Available traffic lights: {available_tls}")
+        try:
+            if self.traffic_light_id not in traci.trafficlight.getIDList():
+                available_tls = traci.trafficlight.getIDList()
+                raise ValueError(f"Traffic light '{self.traffic_light_id}' not found. "
+                               f"Available traffic lights: {available_tls}")
+        except Exception as e:
+            print(f"❌ Traffic light verification failed: {e}")
+            self._close_sumo()
+            raise
     
     def _close_sumo(self):
         """Close SUMO simulation."""
@@ -185,31 +212,51 @@ class SumoTrafficEnv(gym.Env):
         Returns:
             tuple: (observation, reward, terminated, truncated, info)
         """
-        # Apply action
-        self._apply_action(action)
-        
-        # Run simulation for step_duration seconds
-        for _ in range(self.step_duration):
-            traci.simulationStep()
-        
-        # Get new state and reward
-        new_state = self._get_state()
-        reward = self._get_reward()
-        
-        # Update step counter
-        self.current_step += self.step_duration
-        
-        # Check if episode is done
-        terminated = self.current_step >= self.episode_length
-        truncated = False
-        
-        info = {
-            "step": self.current_step,
-            "total_waiting_time": -reward,
-            "current_phase": traci.trafficlight.getPhase(self.traffic_light_id)
-        }
-        
-        return new_state, reward, terminated, truncated, info
+        try:
+            # Apply action
+            self._apply_action(action)
+            
+            # Run simulation for step_duration seconds
+            for _ in range(self.step_duration):
+                traci.simulationStep()
+            
+            # Get new state and reward
+            new_state = self._get_state()
+            reward = self._get_reward()
+            
+            # Update step counter
+            self.current_step += self.step_duration
+            
+            # Check if episode is done
+            terminated = self.current_step >= self.episode_length
+            truncated = False
+            
+            info = {
+                "step": self.current_step,
+                "total_waiting_time": -reward,
+                "current_phase": traci.trafficlight.getPhase(self.traffic_light_id)
+            }
+            
+            return new_state, reward, terminated, truncated, info
+            
+        except Exception as e:
+            print(f"❌ Error during simulation step: {e}")
+            print("🔄 Attempting to recover...")
+            
+            # Try to reconnect
+            try:
+                self._close_sumo()
+                self._start_sumo()
+                
+                # Return safe default state
+                safe_state = np.zeros(20, dtype=np.float32)
+                return safe_state, -1000, True, False, {"error": str(e)}
+                
+            except Exception as recovery_error:
+                print(f"❌ Recovery failed: {recovery_error}")
+                # Return safe default and terminate
+                safe_state = np.zeros(20, dtype=np.float32)
+                return safe_state, -1000, True, False, {"error": str(e), "recovery_error": str(recovery_error)}
     
     def close(self):
         """Close the environment."""

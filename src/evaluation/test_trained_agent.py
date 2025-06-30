@@ -19,6 +19,7 @@ from stable_baselines3 import PPO
 from environments.sumo_traffic_env import SumoTrafficEnv
 
 
+
 def load_trained_agent(model_path):
     """Load the trained PPO agent."""
     print(f"🤖 Loading trained agent from: {model_path}")
@@ -27,17 +28,29 @@ def load_trained_agent(model_path):
     return model
 
 
-def create_demo_environment():
+def create_demo_environment(use_gui=False):
     """Create environment for demonstration with longer episodes."""
     env = SumoTrafficEnv(
         sumo_config_file="sumo_scenarios/cross_intersection.sumocfg",
         step_duration=5,  # 5 seconds per RL step
         episode_length=600  # 10 minutes of simulation time for good demo
     )
+    
+    # Override SUMO command to use GUI
+    if use_gui:
+        # Set DISPLAY environment variable for Mac GUI (crucial!)
+        os.environ['DISPLAY'] = ':0.0'
+        env.sumo_cmd = ["sumo-gui", "-c", env.sumo_config_file, 
+                       "--no-step-log", "--no-warnings"]
+        print("🖥️  GUI mode enabled - you'll see the visual simulation!")
+        print("🔧 Set DISPLAY=:0.0 for Mac GUI compatibility")
+    else:
+        print("⚡ Headless mode - faster but no visual")
+    
     return env
 
 
-def demonstrate_ai_control(model, env, episodes=3):
+def demonstrate_ai_control(model, env, episodes=3, use_gui=False):
     """
     Demonstrate the AI controlling traffic for multiple episodes.
     
@@ -45,9 +58,11 @@ def demonstrate_ai_control(model, env, episodes=3):
         model: Trained PPO agent
         env: SUMO environment
         episodes: Number of episodes to run
+        use_gui: Whether using GUI (default: False for speed)
     """
     print(f"\n🚦 Starting AI Traffic Control Demo")
     print(f"Running {episodes} episodes (10 minutes of traffic each)")
+    print("⚡ Headless mode: Fast execution with detailed statistics")
     print("=" * 60)
     
     episode_rewards = []
@@ -89,6 +104,8 @@ def demonstrate_ai_control(model, env, episodes=3):
                 if last_phase is not None and current_phase != last_phase:
                     phase_changes += 1
                 last_phase = current_phase
+            
+            # No delays needed in headless mode - let it run fast!
             
             # Print periodic updates
             if step_count % 20 == 0:  # Every 100 seconds of simulation
@@ -186,6 +203,7 @@ def main():
     """Main demonstration function."""
     print("🚦 Trained AI Traffic Control Demonstration")
     print("This will show your AI controlling traffic lights intelligently!")
+    print("⚡ Headless Mode: Fast execution with detailed statistics")
     print()
     
     # Find the trained model
@@ -206,20 +224,29 @@ def main():
         # Load trained agent
         model = load_trained_agent(model_path)
         
+        # Default to headless mode for faster execution
+        use_gui = False
+        print("⚡ Running in headless mode for faster execution")
+        
         # Create environment
-        print("\n🏗️  Creating demonstration environment...")
-        env = create_demo_environment()
+        print(f"\n🏗️  Creating demonstration environment (GUI: {use_gui})...")
+        env = create_demo_environment(use_gui=use_gui)
         print("✅ Environment ready!")
+        print("🚀 Your AI will now demonstrate its traffic control skills!")
         
         # Run demonstration
-        episode_stats = demonstrate_ai_control(model, env, episodes=3)
+        episode_stats = demonstrate_ai_control(model, env, episodes=3, use_gui=use_gui)
         
         # Test AI intelligence
         test_ai_intelligence(model, env)
         
         print("\n🎉 Demonstration completed!")
         print("\nYour AI has successfully learned to control traffic signals!")
-        print("Next steps:")
+        print("\n💡 Key observations:")
+        print("  • Notice the low reward values (closer to 0 = less waiting)")
+        print("  • AI makes efficient phase changes")
+        print("  • Consistent performance across episodes")
+        print("\nNext steps:")
         print("  1. Compare against baseline controllers")
         print("  2. Create visualizations")
         print("  3. Build evaluation metrics")
