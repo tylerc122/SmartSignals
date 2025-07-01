@@ -2,3 +2,6 @@
 project.md
 models/
 logs/
+src/agents/__pycache__/
+future_plan.md
+src/evaluation/__pycache__/
