@@ -1,0 +1,125 @@
+{
+  "Fixed-Time (30s cycle)": {
+    "controller_name": "Fixed-Time (30s cycle)",
+    "num_episodes": 5,
+    "episode_length": 120,
+    "avg_reward": -1992.0,
+    "std_reward": 0.0,
+    "avg_waiting_time": 2.812377647558848,
+    "std_waiting_time": 0.0,
+    "avg_phase_changes": 3.0,
+    "std_phase_changes": 0.0,
+    "avg_throughput": 0.0,
+    "std_throughput": 0.0,
+    "episode_rewards": [
+      -1992.0,
+      -1992.0,
+      -1992.0,
+      -1992.0,
+      -1992.0
+    ],
+    "episode_waiting_times": [
+      2.812377647558848,
+      2.812377647558848,
+      2.812377647558848,
+      2.812377647558848,
+      2.812377647558848
+    ],
+    "episode_phase_changes": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "episode_throughput": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "Adaptive Fixed-Time": {
+    "controller_name": "Adaptive Fixed-Time",
+    "num_episodes": 5,
+    "episode_length": 120,
+    "avg_reward": -1571.0,
+    "std_reward": 0.0,
+    "avg_waiting_time": 2.313075409332911,
+    "std_waiting_time": 0.0,
+    "avg_phase_changes": 3.0,
+    "std_phase_changes": 0.0,
+    "avg_throughput": 0.0,
+    "std_throughput": 0.0,
+    "episode_rewards": [
+      -1571.0,
+      -1571.0,
+      -1571.0,
+      -1571.0,
+      -1571.0
+    ],
+    "episode_waiting_times": [
+      2.313075409332911,
+      2.313075409332911,
+      2.313075409332911,
+      2.313075409332911,
+      2.313075409332911
+    ],
+    "episode_phase_changes": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "episode_throughput": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "RL Agent (PPO)": {
+    "controller_name": "RL Agent (PPO)",
+    "num_episodes": 5,
+    "episode_length": 120,
+    "avg_reward": -31.0,
+    "std_reward": 0.0,
+    "avg_waiting_time": 0.07430555572112402,
+    "std_waiting_time": 0.0,
+    "avg_phase_changes": 23.0,
+    "std_phase_changes": 0.0,
+    "avg_throughput": 0.0,
+    "std_throughput": 0.0,
+    "episode_rewards": [
+      -31.0,
+      -31.0,
+      -31.0,
+      -31.0,
+      -31.0
+    ],
+    "episode_waiting_times": [
+      0.07430555572112402,
+      0.07430555572112402,
+      0.07430555572112402,
+      0.07430555572112402,
+      0.07430555572112402
+    ],
+    "episode_phase_changes": [
+      23,
+      23,
+      23,
+      23,
+      23
+    ],
+    "episode_throughput": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
