@@ -29,8 +29,11 @@ class FixedTimeController:
         Default timing: 30 seconds per phase (6 steps × 5 seconds each)
         This creates a classic 2-minute cycle (30s NS + 30s EW + 30s NS + 30s EW)
         """
-
-        self.phase_durations = phase_durations
+        if phase_durations is None:
+            # Default: 30 seconds per phase (6 simulation steps of 5 seconds each)
+            self.phase_durations = [6, 6, 6, 6]  # 4 phases, 6 steps each
+        else:
+            self.phase_durations = phase_durations
         self.step_duration = step_duration
         self.current_phase = 0
         self.steps_in_current_phase = 0
