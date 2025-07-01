@@ -219,13 +219,12 @@ def main():
         
         # Default to headless mode for faster execution
         use_gui = False
-        print("⚡ Running in headless mode for faster execution")
+        print("Headless mode")
         
         # Create environment
-        print(f"\n🏗️  Creating demonstration environment (GUI: {use_gui})...")
+        print(f"\nCreating demonstration environment (GUI: {use_gui})...")
         env = create_demo_environment(use_gui=use_gui)
-        print("✅ Environment ready!")
-        print("🚀 Your AI will now demonstrate its traffic control skills!")
+        print("Environment ready")
         
         # Run demonstration
         episode_stats = demonstrate_ai_control(model, env, episodes=3, use_gui=use_gui)
@@ -233,16 +232,7 @@ def main():
         # Test AI intelligence
         test_ai_intelligence(model, env)
         
-        print("\n🎉 Demonstration completed!")
-        print("\nYour AI has successfully learned to control traffic signals!")
-        print("\n💡 Key observations:")
-        print("  • Notice the low reward values (closer to 0 = less waiting)")
-        print("  • AI makes efficient phase changes")
-        print("  • Consistent performance across episodes")
-        print("\nNext steps:")
-        print("  1. Compare against baseline controllers")
-        print("  2. Create visualizations")
-        print("  3. Build evaluation metrics")
+        print("\nDemonstration completed")
         
     except Exception as e:
         print(f"❌ Error during demonstration: {e}")
@@ -250,7 +240,7 @@ def main():
         traceback.print_exc()
     
     finally:
-        print("\n🧹 Cleaning up...")
+        print("\nCleaning up...")
         try:
             env.close()
         except:

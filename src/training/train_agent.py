@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-Training Script for Traffic Signal Control RL Agent
+Training Script for Agent
 
 This script creates and trains a Proximal Policy Optimization (PPO) agent
 to control traffic lights at our cross intersection. The agent learns by
 interacting with the SUMO simulation thousands of times, getting better
 at minimizing traffic congestion through experience.
+
 """
 
 import os
@@ -58,11 +59,12 @@ def create_environment(config):
 
 def create_agent(env, config):
     """
-    Create the PPO (Proximal Policy Optimization) agent.
+    Create the PPO agent.
     
     PPO is a policy gradient method that's stable and sample efficient.
     It learns a policy (what action to take in each state) and a value function
-    (how good each state is) simultaneously.
+    (how good each state is) simultaneously. It's gradient based, so it can learn
+    from the mistakes of the agent. Good balance between exploration and exploitation.
     """
     # Extract algorithm configuration
     algo_config = config['algorithm']
@@ -117,31 +119,25 @@ def train_agent():
     print(f"✅ Config loaded: {config['algorithm']['name']} for {config['algorithm']['total_timesteps']} timesteps")
     
     # Create environment
-    print("\n🏗️  Creating environment...")
+    print("\nCreating environment...")
     env = create_environment(config)
     print("✅ Environment created and wrapped")
     
     # Create agent
-    print("\n🤖 Creating RL agent...")
+    print("\nCreating RL agent...")
     model = create_agent(env, config)
     print(f"✅ {config['algorithm']['name']} agent created")
     print(f"   Learning rate: {config['algorithm']['learning_rate']}")
     print(f"   Batch size: {config['algorithm']['batch_size']}")
     
     # Setup callbacks
-    print("\n⚙️  Setting up training callbacks...")
+    print("\nSetting up training callbacks...")
     callbacks = setup_callbacks(config)
     print("✅ Callbacks configured")
     
     # Start training
-    print("\n🎓 Starting training...")
+    print("\nStarting training...")
     print(f"Total timesteps: {config['algorithm']['total_timesteps']}")
-    print("This is where the magic happens - the agent will now:")
-    print("  1. Take actions in the traffic environment")
-    print("  2. Observe the results (rewards)")
-    print("  3. Update its policy to get better rewards")
-    print("  4. Repeat thousands of times!")
-    print()
     
     start_time = datetime.now()
     
@@ -159,11 +155,11 @@ def train_agent():
     model_filename = f"models/ppo_traffic_final_{datetime.now().strftime('%Y%m%d_%H%M%S')}.zip"
     model.save(model_filename)
     
-    print("\n🎉 Training completed!")
-    print(f"⏱️  Training duration: {training_duration}")
-    print(f"💾 Final model saved as: {model_filename}")
-    print(f"📊 Tensorboard logs: ./logs/tensorboard/")
-    print(f"🔄 Checkpoints saved in: models/checkpoints/")
+    print("\nTraining completed!")
+    print(f"Training duration: {training_duration}")
+    print(f"Final model saved as: {model_filename}")
+    print(f"Tensorboard logs: ./logs/tensorboard/")
+    print(f"Checkpoints saved in: models/checkpoints/")
     
     # Close environment
     env.close()
@@ -172,8 +168,7 @@ def train_agent():
 
 
 if __name__ == "__main__":
-    print("🚦 Traffic Signal RL Training")
-    print("This script will train an AI agent to control traffic lights!")
+    print("Training")
     print()
     
     # Check if SUMO is available
@@ -186,17 +181,17 @@ if __name__ == "__main__":
     
     # Check if PyTorch is using GPU
     if torch.cuda.is_available():
-        print(f"🚀 GPU available: {torch.cuda.get_device_name()}")
+        print(f"GPU available: {torch.cuda.get_device_name()}")
     else:
-        print("💻 Using CPU for training")
+        print("Using CPU for training")
     
     print()
     
     # Run training
     try:
         model, model_path = train_agent()
-        print("\n✅ Training completed successfully!")
-        print(f"Your trained agent is ready at: {model_path}")
+        print("\nTraining completed successfully!")
+        print(f"Trained agent is ready at: {model_path}")
         
     except KeyboardInterrupt:
         print("\n⏹️  Training interrupted by user")

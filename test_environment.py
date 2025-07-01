@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Test script for the updated SUMO Traffic Environment with Cross Intersection
 
@@ -30,18 +29,18 @@ def test_cross_intersection():
     
     try:
         print("✅ Environment created successfully")
-        print(f"📊 Observation space: {env.observation_space}")
-        print(f"🎮 Action space: {env.action_space}")
+        print(f"Observation space: {env.observation_space}")
+        print(f"Action space: {env.action_space}")
         
         # Test reset
-        print("\n🔄 Testing environment reset...")
+        print("\nTesting environment reset...")
         observation, info = env.reset()
         print(f"✅ Reset successful")
-        print(f"📋 Initial observation shape: {observation.shape}")
-        print(f"📋 Initial observation: {observation}")
+        print(f"Initial observation shape: {observation.shape}")
+        print(f"Initial observation: {observation}")
         
         # Test multiple steps with different actions
-        print("\n🏃 Testing environment steps...")
+        print("\nTesting environment steps...")
         total_reward = 0
         
         for step in range(5):  # Test 5 steps (25 seconds of simulation)
@@ -51,31 +50,31 @@ def test_cross_intersection():
             obs, reward, terminated, truncated, info = env.step(action)
             total_reward += reward
             
-            print(f"    📊 Observation shape: {obs.shape}")
-            print(f"    🎁 Reward: {reward:.2f}")
-            print(f"    🏁 Terminated: {terminated}")
-            print(f"    ⏰ Step info: {info}")
+            print(f"     Observation shape: {obs.shape}")
+            print(f"     Reward: {reward:.2f}")
+            print(f"     Terminated: {terminated}")
+            print(f"     Step info: {info}")
             
             if terminated or truncated:
                 print("    Episode completed!")
                 break
         
-        print(f"\n📈 Total reward: {total_reward:.2f}")
-        print("✅ All tests passed!")
+        print(f"\nTotal reward: {total_reward:.2f}")
+        print("All tests passed!")
         
         # Test state interpretation
-        print("\n🔍 Analyzing final state...")
+        print("\nAnalyzing final state...")
         incoming_vehicles = obs[:4]  # First 4 values: incoming lane vehicle counts
         outgoing_vehicles = obs[4:8]  # Next 4 values: outgoing lane vehicle counts
         incoming_waiting = obs[8:12]  # Next 4 values: incoming lane waiting times
         outgoing_waiting = obs[12:16]  # Next 4 values: outgoing lane waiting times
         phase_encoding = obs[16:20]  # Last 4 values: traffic light phase
         
-        print(f"  🚗 Incoming vehicles (N,E,S,W): {incoming_vehicles}")
-        print(f"  🚗 Outgoing vehicles (N,E,S,W): {outgoing_vehicles}")
-        print(f"  ⏰ Incoming waiting times: {incoming_waiting}")
-        print(f"  ⏰ Outgoing waiting times: {outgoing_waiting}")
-        print(f"  🚦 Current phase: {np.argmax(phase_encoding)} (one-hot: {phase_encoding})")
+        print(f"   Incoming vehicles (N,E,S,W): {incoming_vehicles}")
+        print(f"   Outgoing vehicles (N,E,S,W): {outgoing_vehicles}")
+        print(f"   Incoming waiting times: {incoming_waiting}")
+        print(f"   Outgoing waiting times: {outgoing_waiting}")
+        print(f"  Current phase: {np.argmax(phase_encoding)} (one-hot: {phase_encoding})")
         
     except Exception as e:
         print(f"❌ Error during testing: {e}")
@@ -83,24 +82,23 @@ def test_cross_intersection():
         traceback.print_exc()
         
     finally:
-        print("\n🧹 Cleaning up...")
+        print("\nCleaning up...")
         env.close()
-        print("✅ Environment closed")
+        print("Environment closed")
 
 
 if __name__ == "__main__":
-    print("🚀 Starting Cross Intersection Environment Test")
+    print("Starting Cross Intersection Environment Test")
     print("This tests our new 4-way intersection with proper crossing traffic!")
     print()
     
     test_cross_intersection()
     
-    print("\n🎉 Test completed!")
+    print("\nTest completed!")
     print("\nWhat we tested:")
-    print("- ✅ Environment creation with cross intersection")
-    print("- ✅ Reset functionality") 
+    print("- Environment creation with cross intersection")
+    print("- Reset functionality") 
     print("- ✅ Step execution with traffic light control")
     print("- ✅ State observation (20-dimensional)")
     print("- ✅ Reward calculation") 
     print("- ✅ Proper cleanup")
-    print("\nNext: Train an RL agent on this environment! 🤖") 
