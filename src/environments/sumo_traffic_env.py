@@ -271,7 +271,6 @@ class SumoTrafficEnv(gym.Env):
             
         except Exception as e:
             print(f"❌ Error during simulation step: {e}")
-            print("🔄 Attempting to recover...")
             
             # Try to reconnect
             try:

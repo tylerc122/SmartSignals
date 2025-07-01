@@ -2,9 +2,9 @@
 """
 Test Trained Traffic Signal RL Agent
 
-This script loads your trained AI agent and demonstrates it controlling
-traffic lights in real-time. You can watch your AI make intelligent
-decisions to minimize traffic congestion!
+This script loads the trained AI agent and demonstrates it controlling
+traffic lights in real time. It will run 3 episodes of 10 minutes each.
+
 """
 
 import os
@@ -22,7 +22,7 @@ from environments.sumo_traffic_env import SumoTrafficEnv
 
 def load_trained_agent(model_path):
     """Load the trained PPO agent."""
-    print(f"🤖 Loading trained agent from: {model_path}")
+    print(f"Loading trained agent from: {model_path}")
     model = PPO.load(model_path)
     print("✅ AI agent loaded successfully!")
     return model
@@ -33,19 +33,17 @@ def create_demo_environment(use_gui=False):
     env = SumoTrafficEnv(
         sumo_config_file="sumo_scenarios/cross_intersection.sumocfg",
         step_duration=5,  # 5 seconds per RL step
-        episode_length=600  # 10 minutes of simulation time for good demo
+        episode_length=600  # 10 minutes of simulation time for short demo
     )
     
-    # Override SUMO command to use GUI
     if use_gui:
         # Set DISPLAY environment variable for Mac GUI (crucial!)
         os.environ['DISPLAY'] = ':0.0'
         env.sumo_cmd = ["sumo-gui", "-c", env.sumo_config_file, 
                        "--no-step-log", "--no-warnings"]
-        print("🖥️  GUI mode enabled - you'll see the visual simulation!")
-        print("🔧 Set DISPLAY=:0.0 for Mac GUI compatibility")
+        print("GUI mode enabled")
     else:
-        print("⚡ Headless mode - faster but no visual")
+        print("Headless mode")
     
     return env
 
@@ -60,9 +58,9 @@ def demonstrate_ai_control(model, env, episodes=3, use_gui=False):
         episodes: Number of episodes to run
         use_gui: Whether using GUI (default: False for speed)
     """
-    print(f"\n🚦 Starting AI Traffic Control Demo")
+    print(f"\nStarting AI Traffic Control Demo")
     print(f"Running {episodes} episodes (10 minutes of traffic each)")
-    print("⚡ Headless mode: Fast execution with detailed statistics")
+    print("Headless mode")
     print("=" * 60)
     
     episode_rewards = []
@@ -126,7 +124,7 @@ def demonstrate_ai_control(model, env, episodes=3, use_gui=False):
             'steps': step_count
         })
         
-        print(f"\n📊 Episode {episode + 1} Results:")
+        print(f"\n Episode {episode + 1} Results:")
         print(f"   Total reward: {total_reward:.1f}")
         print(f"   Average reward per step: {avg_reward_per_step:.2f}")
         print(f"   Final waiting time: {total_waiting_time:.1f} seconds")
@@ -141,31 +139,27 @@ def demonstrate_ai_control(model, env, episodes=3, use_gui=False):
     avg_total_reward = np.mean(episode_rewards)
     std_total_reward = np.std(episode_rewards)
     
-    print(f"📈 Average episode reward: {avg_total_reward:.1f} ± {std_total_reward:.1f}")
-    print(f"🎯 Best episode reward: {max(episode_rewards):.1f}")
-    print(f"📉 Worst episode reward: {min(episode_rewards):.1f}")
+    print(f"Average episode reward: {avg_total_reward:.1f} ± {std_total_reward:.1f}")
+    print(f"Best episode reward: {max(episode_rewards):.1f}")
+    print(f"Worst episode reward: {min(episode_rewards):.1f}")
     
     avg_waiting = np.mean([s['total_waiting_time'] for s in episode_stats])
     avg_phase_changes = np.mean([s['phase_changes'] for s in episode_stats])
     
-    print(f"⏰ Average waiting time per episode: {avg_waiting:.1f} seconds")
-    print(f"🔄 Average phase changes per episode: {avg_phase_changes:.1f}")
-    
-    print("\n💡 What this means:")
-    print(f"   • Your AI minimizes vehicle waiting (negative reward closer to 0 is better)")
-    print(f"   • Lower waiting times = more efficient traffic flow")
-    print(f"   • Fewer phase changes = smoother operation")
+    print(f"Average waiting time per episode: {avg_waiting:.1f} seconds")
+    print(f"Average phase changes per episode: {avg_phase_changes:.1f}")
     
     return episode_stats
 
 
 def test_ai_intelligence(model, env):
     """
-    Test specific scenarios to show AI intelligence.
+    Test specific scenarios to show model intelligence.
     """
-    print("\n🧠 TESTING AI INTELLIGENCE")
+
+    print("\n Testing model intelligence")
     print("=" * 40)
-    print("Let's see how your AI handles specific traffic scenarios...")
+    print("Let's see how the AI handles specific traffic scenarios...")
     
     # Reset environment
     obs, info = env.reset()
@@ -196,14 +190,13 @@ def test_ai_intelligence(model, env):
         direction_names = ['North', 'East', 'South', 'West']
         
         if incoming_vehicles[max_waiting_direction] > 0:
-            print(f"  🤖 AI Logic: Most congestion in {direction_names[max_waiting_direction]} direction")
+            print(f" Logic: Most congestion in {direction_names[max_waiting_direction]} direction")
 
 
 def main():
     """Main demonstration function."""
-    print("🚦 Trained AI Traffic Control Demonstration")
-    print("This will show your AI controlling traffic lights intelligently!")
-    print("⚡ Headless Mode: Fast execution with detailed statistics")
+    print("Trained AI Traffic Control Demonstration")
+    print("Headless Mode")
     print()
     
     # Find the trained model
