@@ -1,0 +1,779 @@
+{
+  "test_metadata": {
+    "test_type": "multi_scale_comparison",
+    "test_timestamp": "2025-07-02T10:12:18.330144",
+    "scales_tested": [
+      "short",
+      "medium"
+    ],
+    "sumo_config": "sumo_scenarios/cross_intersection.sumocfg"
+  },
+  "results": {
+    "short": {
+      "Fixed-Time": {
+        "controller_name": "Fixed-Time",
+        "scale": "short",
+        "scale_config": {
+          "name": "Short-term (10 min)",
+          "episode_length": 120,
+          "num_episodes": 5,
+          "description": "Quick response validation"
+        },
+        "num_episodes": 5,
+        "episode_length": 120,
+        "total_simulated_time": 3000,
+        "avg_reward": -1992.0,
+        "std_reward": 0.0,
+        "min_reward": -1992.0,
+        "max_reward": -1992.0,
+        "avg_waiting_time": 2.812377647558848,
+        "std_waiting_time": 0.0,
+        "min_waiting_time": 2.812377647558848,
+        "max_waiting_time": 2.812377647558848,
+        "avg_phase_changes": 3.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 3,
+        "max_phase_changes": 3,
+        "avg_throughput": 0.0,
+        "std_throughput": 0.0,
+        "total_throughput": 0,
+        "episode_rewards": [
+          -1992.0,
+          -1992.0,
+          -1992.0,
+          -1992.0,
+          -1992.0
+        ],
+        "episode_waiting_times": [
+          2.812377647558848,
+          2.812377647558848,
+          2.812377647558848,
+          2.812377647558848,
+          2.812377647558848
+        ],
+        "episode_phase_changes": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "episode_throughput": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "detailed_metrics": [
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -102.0,
+              "waiting_time": 17.96666717529297,
+              "action": 2,
+              "cumulative_reward": -372.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -102.0,
+              "waiting_time": 17.96666717529297,
+              "action": 2,
+              "cumulative_reward": -372.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -102.0,
+              "waiting_time": 17.96666717529297,
+              "action": 2,
+              "cumulative_reward": -372.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -102.0,
+              "waiting_time": 17.96666717529297,
+              "action": 2,
+              "cumulative_reward": -372.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -102.0,
+              "waiting_time": 17.96666717529297,
+              "action": 2,
+              "cumulative_reward": -372.0,
+              "phase_changes": 2
+            }
+          ]
+        ],
+        "test_timestamp": "2025-07-02T10:11:55.014785"
+      },
+      "Adaptive-Fixed": {
+        "controller_name": "Adaptive-Fixed",
+        "scale": "short",
+        "scale_config": {
+          "name": "Short-term (10 min)",
+          "episode_length": 120,
+          "num_episodes": 5,
+          "description": "Quick response validation"
+        },
+        "num_episodes": 5,
+        "episode_length": 120,
+        "total_simulated_time": 3000,
+        "avg_reward": -1571.0,
+        "std_reward": 0.0,
+        "min_reward": -1571.0,
+        "max_reward": -1571.0,
+        "avg_waiting_time": 2.313075409332911,
+        "std_waiting_time": 0.0,
+        "min_waiting_time": 2.313075409332911,
+        "max_waiting_time": 2.313075409332911,
+        "avg_phase_changes": 3.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 3,
+        "max_phase_changes": 3,
+        "avg_throughput": 0.0,
+        "std_throughput": 0.0,
+        "total_throughput": 0,
+        "episode_rewards": [
+          -1571.0,
+          -1571.0,
+          -1571.0,
+          -1571.0,
+          -1571.0
+        ],
+        "episode_waiting_times": [
+          2.313075409332911,
+          2.313075409332911,
+          2.313075409332911,
+          2.313075409332911,
+          2.313075409332911
+        ],
+        "episode_phase_changes": [
+          3,
+          3,
+          3,
+          3,
+          3
+        ],
+        "episode_throughput": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "detailed_metrics": [
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -21.0,
+              "waiting_time": 5.25,
+              "action": 2,
+              "cumulative_reward": -280.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -21.0,
+              "waiting_time": 5.25,
+              "action": 2,
+              "cumulative_reward": -280.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -21.0,
+              "waiting_time": 5.25,
+              "action": 2,
+              "cumulative_reward": -280.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -21.0,
+              "waiting_time": 5.25,
+              "action": 2,
+              "cumulative_reward": -280.0,
+              "phase_changes": 2
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -21.0,
+              "waiting_time": 5.25,
+              "action": 2,
+              "cumulative_reward": -280.0,
+              "phase_changes": 2
+            }
+          ]
+        ],
+        "test_timestamp": "2025-07-02T10:12:00.548669"
+      },
+      "RL-Agent": {
+        "controller_name": "RL-Agent",
+        "scale": "short",
+        "scale_config": {
+          "name": "Short-term (10 min)",
+          "episode_length": 120,
+          "num_episodes": 5,
+          "description": "Quick response validation"
+        },
+        "num_episodes": 5,
+        "episode_length": 120,
+        "total_simulated_time": 3000,
+        "avg_reward": -31.0,
+        "std_reward": 0.0,
+        "min_reward": -31.0,
+        "max_reward": -31.0,
+        "avg_waiting_time": 0.07430555572112402,
+        "std_waiting_time": 0.0,
+        "min_waiting_time": 0.07430555572112402,
+        "max_waiting_time": 0.07430555572112402,
+        "avg_phase_changes": 23.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 23,
+        "max_phase_changes": 23,
+        "avg_throughput": 0.0,
+        "std_throughput": 0.0,
+        "total_throughput": 0,
+        "episode_rewards": [
+          -31.0,
+          -31.0,
+          -31.0,
+          -31.0,
+          -31.0
+        ],
+        "episode_waiting_times": [
+          0.07430555572112402,
+          0.07430555572112402,
+          0.07430555572112402,
+          0.07430555572112402,
+          0.07430555572112402
+        ],
+        "episode_phase_changes": [
+          23,
+          23,
+          23,
+          23,
+          23
+        ],
+        "episode_throughput": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "detailed_metrics": [
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -6.0,
+              "phase_changes": 12
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -6.0,
+              "phase_changes": 12
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -6.0,
+              "phase_changes": 12
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -6.0,
+              "phase_changes": 12
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 12,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -6.0,
+              "phase_changes": 12
+            }
+          ]
+        ],
+        "test_timestamp": "2025-07-02T10:12:06.089757"
+      }
+    },
+    "medium": {
+      "Fixed-Time": {
+        "controller_name": "Fixed-Time",
+        "scale": "medium",
+        "scale_config": {
+          "name": "Medium-term (2 hours)",
+          "episode_length": 1440,
+          "num_episodes": 3,
+          "description": "Sustained rush hour performance"
+        },
+        "num_episodes": 3,
+        "episode_length": 1440,
+        "total_simulated_time": 21600,
+        "avg_reward": -10004.0,
+        "std_reward": 0.0,
+        "min_reward": -10004.0,
+        "max_reward": -10004.0,
+        "avg_waiting_time": 1.121763118273682,
+        "std_waiting_time": 0.0,
+        "min_waiting_time": 1.121763118273682,
+        "max_waiting_time": 1.121763118273682,
+        "avg_phase_changes": 47.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 47,
+        "max_phase_changes": 47,
+        "avg_throughput": 0.0,
+        "std_throughput": 0.0,
+        "total_throughput": 0,
+        "episode_rewards": [
+          -10004.0,
+          -10004.0,
+          -10004.0
+        ],
+        "episode_waiting_times": [
+          1.121763118273682,
+          1.121763118273682,
+          1.121763118273682
+        ],
+        "episode_phase_changes": [
+          47,
+          47,
+          47
+        ],
+        "episode_throughput": [
+          0,
+          0,
+          0
+        ],
+        "detailed_metrics": [
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": -10004.0,
+              "phase_changes": 24
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": -10004.0,
+              "phase_changes": 24
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": -10004.0,
+              "phase_changes": 24
+            }
+          ]
+        ],
+        "test_timestamp": "2025-07-02T10:12:10.176088"
+      },
+      "Adaptive-Fixed": {
+        "controller_name": "Adaptive-Fixed",
+        "scale": "medium",
+        "scale_config": {
+          "name": "Medium-term (2 hours)",
+          "episode_length": 1440,
+          "num_episodes": 3,
+          "description": "Sustained rush hour performance"
+        },
+        "num_episodes": 3,
+        "episode_length": 1440,
+        "total_simulated_time": 21600,
+        "avg_reward": -7254.0,
+        "std_reward": 0.0,
+        "min_reward": -7254.0,
+        "max_reward": -7254.0,
+        "avg_waiting_time": 0.9724032724069224,
+        "std_waiting_time": 1.1102230246251565e-16,
+        "min_waiting_time": 0.9724032724069225,
+        "max_waiting_time": 0.9724032724069225,
+        "avg_phase_changes": 47.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 47,
+        "max_phase_changes": 47,
+        "avg_throughput": 0.0,
+        "std_throughput": 0.0,
+        "total_throughput": 0,
+        "episode_rewards": [
+          -7254.0,
+          -7254.0,
+          -7254.0
+        ],
+        "episode_waiting_times": [
+          0.9724032724069225,
+          0.9724032724069225,
+          0.9724032724069225
+        ],
+        "episode_phase_changes": [
+          47,
+          47,
+          47
+        ],
+        "episode_throughput": [
+          0,
+          0,
+          0
+        ],
+        "detailed_metrics": [
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": -7254.0,
+              "phase_changes": 24
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": -7254.0,
+              "phase_changes": 24
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 0,
+              "cumulative_reward": -7254.0,
+              "phase_changes": 24
+            }
+          ]
+        ],
+        "test_timestamp": "2025-07-02T10:12:14.254285"
+      },
+      "RL-Agent": {
+        "controller_name": "RL-Agent",
+        "scale": "medium",
+        "scale_config": {
+          "name": "Medium-term (2 hours)",
+          "episode_length": 1440,
+          "num_episodes": 3,
+          "description": "Sustained rush hour performance"
+        },
+        "num_episodes": 3,
+        "episode_length": 1440,
+        "total_simulated_time": 21600,
+        "avg_reward": -72.0,
+        "std_reward": 0.0,
+        "min_reward": -72.0,
+        "max_reward": -72.0,
+        "avg_waiting_time": 0.017534722284310394,
+        "std_waiting_time": 0.0,
+        "min_waiting_time": 0.017534722284310394,
+        "max_waiting_time": 0.017534722284310394,
+        "avg_phase_changes": 287.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 287,
+        "max_phase_changes": 287,
+        "avg_throughput": 0.0,
+        "std_throughput": 0.0,
+        "total_throughput": 0,
+        "episode_rewards": [
+          -72.0,
+          -72.0,
+          -72.0
+        ],
+        "episode_waiting_times": [
+          0.017534722284310394,
+          0.017534722284310394,
+          0.017534722284310394
+        ],
+        "episode_phase_changes": [
+          287,
+          287,
+          287
+        ],
+        "episode_throughput": [
+          0,
+          0,
+          0
+        ],
+        "detailed_metrics": [
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -72.0,
+              "phase_changes": 144
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -72.0,
+              "phase_changes": 144
+            }
+          ],
+          [
+            {
+              "step": 0,
+              "reward": -0.0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": 0.0,
+              "phase_changes": 0
+            },
+            {
+              "step": 144,
+              "reward": 0,
+              "waiting_time": 0.0,
+              "action": 1,
+              "cumulative_reward": -72.0,
+              "phase_changes": 144
+            }
+          ]
+        ],
+        "test_timestamp": "2025-07-02T10:12:18.329687"
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "test_metadata": {
+    "test_type": "multi_scale_comparison",
+    "test_timestamp": "2025-07-02T10:11:19.956434",
+    "scales_tested": [
+      "short"
+    ],
+    "sumo_config": "sumo_scenarios/cross_intersection.sumocfg"
+  },
+  "results": {
+    "short": {
+      "Fixed-Time": {
+        "controller_name": "Fixed-Time",
+        "scale": "short",
+        "scale_config": {
+          "name": "Short-term (10 min)",
+          "episode_length": 120,
+          "num_episodes": 5,
+          "description": "Quick response validation"
+        },
+        "num_episodes": 5,
+        "episode_length": 120,
+        "total_simulated_time": 3000,
+        "avg_reward": -1992.0,
+        "std_reward": 0.0,
+        "min_reward": -1992.0,
+        "max_reward": -1992.0,
+        "avg_waiting_time": 2.812377647558848,
+        "std_waiting_time": 0.0,
+        "min_waiting_time": 2.812377647558848,
+        "max_waiting_time": 2.812377647558848,
+        "avg_phase_changes": 3.0,
+        "std_phase_changes": 0.0,
+        "min_phase_changes": 

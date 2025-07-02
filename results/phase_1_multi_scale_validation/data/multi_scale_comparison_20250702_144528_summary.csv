@@ -1,0 +1,10 @@
+Scale,Controller,Simulated_Hours,Avg_Reward,Avg_Waiting_Time,Total_Throughput,Avg_Phase_Changes,Std_Waiting_Time
+Short-term (10 min),Fixed-Time,0.8333333333333334,-1992.0,2.812377647558848,0,3.0,0.0
+Short-term (10 min),Adaptive-Fixed,0.8333333333333334,-1571.0,2.313075409332911,0,3.0,0.0
+Short-term (10 min),RL-Agent,0.8333333333333334,-31.0,0.07430555572112402,0,23.0,0.0
+Medium-term (2 hours),Fixed-Time,6.0,-10004.0,1.121763118273682,0,47.0,0.0
+Medium-term (2 hours),Adaptive-Fixed,6.0,-7254.0,0.9724032724069224,0,47.0,1.1102230246251565e-16
+Medium-term (2 hours),RL-Agent,6.0,-72.0,0.017534722284310394,0,287.0,0.0
+Long-term (8 hours),Fixed-Time,16.0,-10004.0,0.2804407795684205,0,191.0,0.0
+Long-term (8 hours),Adaptive-Fixed,16.0,-7254.0,0.24310081810173062,0,191.0,0.0
+Long-term (8 hours),RL-Agent,16.0,-72.0,0.0043836805710775984,0,1151.0,0.0
