@@ -20,18 +20,17 @@ A practical exploration of how modern RL techniques can dramatically improve int
 
 ## Introduction
 
-Traditional traffic lights run on fixed schedules. They ignore real-time conditions, creating unnecessary stops, congestion, and emissions.  
-This project asks a simple question:
+Traditional traffic lights run on fixed schedules. They ignore real-time conditions, creating unnecessary stops, congestion, and emissions. This project asks a simple question:
 
 > _Can a reinforcement-learning agent learn to run a single intersection better than a hand-crafted, static, schedule?_
 
-The answer is **yes—by a dramatic margin.** Our trained PPO agent achieves **98.6% reduction in vehicle wait times** compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
+The answer is **yes—by a dramatic margin.** The trained PPO agent achieves **98.6% reduction in vehicle wait times** compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
 
 ---
 
 ## Methods
 
-This project was planned to be iterative from the beginning. I started work in May 2025, since I hadn't interacted with reinforcement learning in any capacity, I did a lot of reading on different algorithms such as PPO, (the one initially used in this project) DQN, TRPO etc. I didn't try to grasp the theory of it too much rather their implementations and use cases to see which algorithm would suit the project best. I eventually landed on PPO due to its stability, good sample-efficiency on discrete action spaces, and strong off-the-shelf support in Stable Baselines3.
+This project was planned to be iterative from the beginning. I started work in May 2025. Since I hadn't interacted with reinforcement learning in any capacity, I did a lot of reading on different algorithms such as PPO, (the one used in this project) DQN, TRPO etc. I didn't try to grasp the theory of it too much rather their implementations and use cases to see which algorithm would suit the project best. I eventually landed on PPO due to its stability, good sample-efficiency on discrete action spaces, and strong off-the-shelf support in Stable Baselines3.
 
 ---
 
@@ -44,9 +43,9 @@ This project was planned to be iterative from the beginning. I started work in M
 
 Phase 1 consisted of training one PPO agent (training details found here <- need to link training config later in readme), and creating two baseline controllers. The first baseline controller was on a fixed time schedule (30s green each direction creating a 2 minute schedule) and the other a slightly smarter fixed-time controller with different timing patterns allowing for asymmetric timing (e.g., longer green for busy directions, this is the one that most closely mimics real traffic lights).
 
-After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario.
+After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario. The comparison script started out as a simple 10-minute testing period comparing all three controllers. Through an iterative process, it evolved into a more robust multi-scale validation system supporting short-term (10 minutes), medium-term (2 hours), and long-term (8 hours) testing durations. This evolution yielded much stronger evidence as the agent's performance advantages became more pronounced with longer test durations compared to the baseline controllers.
 
-The testing methodology ensures fairness by running all three controllers under identical conditions: same SUMO configuration, same traffic demand patterns, and same episode lengths (120 steps = 10 minutes of simulated traffic). Each controller is evaluated across 5 independent episodes to capture performance consistency and calculate statistical measures.
+The current testing methodology ensures fairness by running all controllers under identical conditions across these three time scales: 120 steps/5 episodes, 1440 steps/3 episodes, and 5760 steps/2 episodes respectively. Each scale uses the same SUMO configuration and traffic demand patterns, with statistical measures calculated for comprehensive performance validation.
 
 For each episode, the script collects key metrics:
 
@@ -57,22 +56,22 @@ For each episode, the script collects key metrics:
 
 The comparison script automatically handles environment resets, action execution, and data logging, ensuring no human bias in the evaluation process. Results are saved to JSON files with timestamps for reproducibility.
 
-#### Multi-Scale Performance Validation
+## Results across time horizons:
 
-**Results across time horizons:**
+_Average waiting time per vehicle (seconds):_
 
-| Time Scale      | Duration   | RL Agent   | Adaptive Fixed | Fixed-Time | **RL Improvement**  |
-| --------------- | ---------- | ---------- | -------------- | ---------- | ------------------- |
-| **Short-term**  | 10 minutes | **0.074s** | 2.313s         | 2.812s     | **97.4% reduction** |
-| **Medium-term** | 2 hours    | **0.018s** | 0.972s         | 1.122s     | **98.4% reduction** |
-| **Long-term**   | 8 hours    | **0.004s** | 0.243s         | 0.280s     | **98.6% reduction** |
+| Time Scale      | Duration   | RL Agent   | Adaptive Fixed | Fixed-Time | **RL Improvement**                  |
+| --------------- | ---------- | ---------- | -------------- | ---------- | ----------------------------------- |
+| **Short-term**  | 10 minutes | **0.074s** | 2.313s         | 2.812s     | **97.4% reduction in waiting time** |
+| **Medium-term** | 2 hours    | **0.018s** | 0.972s         | 1.122s     | **98.4% reduction in waiting time** |
+| **Long-term**   | 8 hours    | **0.004s** | 0.243s         | 0.280s     | **98.6% reduction in waiting time** |
 
 **Key Insights:**
 
-- **Performance improves with longer time horizons** – the RL agent optimizes better for sustained traffic patterns
-- **98.6% wait time reduction** achieved over 8-hour simulations – exceeding initial 90% improvement targets
+- **Performance improves with longer time horizons** – the agent optimizes better for sustained traffic patterns
+- **98.6% wait time reduction** achieved over 8-hour simulations – exceeding initial 50% improvement targets
 - **139× better system performance** (reward ratio) demonstrates massive efficiency gains
-- **22.7 total hours simulated** across all tests provides robust validation
+- **22.7 total hours simulated** across all tests for robust testing
 
 <p align="center">
   <img alt="Multi-Scale Performance Comparison" src="results/phase_1_multi_scale_validation/visualizations/performance_comparison.png" width="80%">
@@ -82,9 +81,7 @@ The comparison script automatically handles environment resets, action execution
   <img alt="Performance Scaling Over Time" src="results/phase_1_multi_scale_validation/visualizations/performance_scaling.png" width="80%">
 </p>
 
-The multi-scale analysis proves that the RL agent not only provides immediate improvements but maintains and enhances performance over extended operational periods, validating real-world deployment potential.
-
-_Additional visualizations available in `results/phase_1_multi_scale_validation/visualizations/`_
+The multi-scale analysis proves that the RL agent not only provides immediate improvements but maintains and enhances performance over extended operational periods.
 
 ### Phase 2 – Stochastic Validation (Upcoming) <a name="phase-2"></a>
 
@@ -163,4 +160,4 @@ The model was trained for 100,000 timesteps (approximately 139 simulated hours o
    • scalability analysis
 3. **Algorithm Benchmarks** (DQN, A2C, SAC, etc.)
 
-_Last updated 2025-07-01_
+_Last updated 2025-07-02_
