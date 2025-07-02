@@ -255,7 +255,7 @@ class TrafficControllerComparison:
         """Save comparison results to JSON file."""
         if filename is None:
             timestamp = time.strftime("%Y%m%d_%H%M%S")
-            filename = f"results/controller_comparison_{timestamp}.json"
+            filename = f"results/phase_1_multi_scale_validation/data/controller_comparison_{timestamp}.json"
         
         # Create results directory if it doesn't exist
         os.makedirs(os.path.dirname(filename), exist_ok=True)

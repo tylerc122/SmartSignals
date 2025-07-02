@@ -39,7 +39,7 @@ class TrafficVisualizationGenerator:
         """Load comparison results from JSON file."""
         if results_file is None:
             # Find the most recent results file
-            results_files = glob.glob("results/controller_comparison_*.json")
+            results_files = glob.glob("results/phase_1_multi_scale_validation/data/controller_comparison_*.json")
             if not results_files:
                 # Create mock data for demo if no results available
                 return self.create_mock_data()
