@@ -99,8 +99,8 @@ The multi-scale analysis proves that the RL agent not only provides immediate im
 
 ```bash
 # clone repository
-$ git clone https://github.com/yourusername/Smart_Signals.git
-$ cd Smart_Signals
+$ git clone https://github.com/tylerc122/SmartSignals.git
+$ cd SmartSignals
 
 # install dependencies (Python 3.8+)
 $ pip install -r requirements.txt
@@ -120,15 +120,25 @@ Training scripts (`src/training/`) allow you to retrain or experiment with alter
 ## Project Structure <a name="project-structure"></a>
 
 ```
-Smart_Signals/
+SmartSignals/
 ├── src/
 │   ├── environments/   # SUMO-based Gymnasium environment
 │   ├── agents/         # RL and baseline controllers
 │   ├── training/       # Training scripts
-│   └── evaluation/     # Comparison & visualisation tools
+│   ├── evaluation/     # Comparison & visualization tools
+│   └── utils/          # Helper functions
 ├── sumo_scenarios/     # Network / route definitions
-├── results/            # Logged metrics & charts
-└── models/             # Saved RL models (git-ignored)
+├── results/
+│   ├── phase_1_multi_scale_validation/  # Multi-scale test results
+│   └── visualizations/                  # Generated charts
+├── configs/            # Training configuration files
+├── models/             # Saved RL models (git-ignored)
+├── data/               # Raw data storage
+├── logs/               # Training logs (git-ignored)
+├── tests/              # Unit tests
+├── run_multi_scale_analysis.py  # Main analysis runner
+├── test_environment.py          # Environment testing
+└── start_gui.sh                 # SUMO GUI launcher
 ```
 
 ---
