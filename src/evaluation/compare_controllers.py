@@ -2,9 +2,9 @@
 Controller Comparison Script
 
 This script compares the performance of different traffic control strategies:
-1. Trained RL Agent (your smart AI)
-2. Fixed-Time Controller (traditional traffic light)
-3. Adaptive Fixed-Time Controller (slightly smarter baseline)
+1. Trained RL Agent
+2. Fixed-Time Controller
+3. Adaptive Fixed-Time Controller
 
 It runs them under identical traffic conditions and collects metrics to prove
 which approach works better.
