@@ -5,3 +5,6 @@ logs/
 src/agents/__pycache__/
 future_plan.md
 src/evaluation/__pycache__/
+src/evaluation/create_visualizations.py
+src/evaluation/create_clean_charts.py
+src/evaluation/create_multi_scale_visualizations.py
