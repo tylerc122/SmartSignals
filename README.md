@@ -26,13 +26,13 @@ This project moves beyond that baseline to ask a more meaningful question:
 
 > _Can a reinforcement-learning agent learn to run a single intersection better than a modern, rule-based, actuated controller?_
 
-The answer is **yes—by a dramatic margin.** The trained PPO agent achieves **98.6% reduction in vehicle wait times** compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
+The answer is **yes—by a dramatic margin.** The trained PPO agent achieves a **77-89%** reduction in vehicle wait time compared to industry standard, actuated traffic controllers and a **98.6% reduction in vehicle wait times** when compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
 
 ---
 
 ## Methods
 
-This project was planned to be iterative from the beginning. I started work in May 2025. Since I hadn't interacted with reinforcement learning in any capacity, I did a lot of reading on different algorithms such as PPO, (the one used in this project) DQN, TRPO etc. I didn't try to grasp the theory of it too much rather their implementations and use cases to see which algorithm would suit the project best. I eventually landed on PPO due to its stability, good sample-efficiency on discrete action spaces, and strong off-the-shelf support in Stable Baselines3.
+This project was planned to be fairly iterative from the beginning. I started work in May 2025. Since I hadn't interacted with reinforcement learning in any capacity, I did a lot of research on different algorithms such as PPO, (the one used in this project) DQN, TRPO etc. I didn't try to grasp the theory of it too much rather focusing on their implementations and use cases to see which algorithm would suit the project best. I eventually landed on PPO due to its stability, good sample-efficiency on discrete action spaces, and strong off-the-shelf support in Stable Baselines3.
 
 ---
 
@@ -45,14 +45,14 @@ This project was planned to be iterative from the beginning. I started work in M
 
 Phase 1 consisted of training one PPO agent (training details found here <- need to link training config later in readme), and creating three baseline controllers for comprehensive comparison. These include traditional fixed-time controllers, adaptive fixed-time variants, and industry-standard vehicle-actuated controllers that represent current real-world technology.
 
-After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario. The comparison script evolved into a robust multi-scale validation system comparing **four distinct traffic control approaches**:
+After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario. The comparison script evolved into a robust multi-scale validation system comparing four distinct traffic control approaches:
 
 1. **Fixed-Time Controller** - Traditional traffic lights with rigid timing (legacy technology)
 2. **Adaptive Fixed-Time Controller** - Pre-optimized timing patterns for different directions
 3. **Vehicle-Actuated Controller** - Industry-standard technology that responds to real-time vehicle detection (current practice)
-4. **RL Agent** - Our AI-powered adaptive controller (proposed innovation)
+4. **RL Agent** - AI-powered adaptive controller
 
-The Vehicle-Actuated controller represents the current state-of-the-art in traffic engineering, used in most modern intersections worldwide. It implements realistic features including minimum/maximum green times, vehicle detection thresholds, and demand-responsive phase switching - making it a **scientifically rigorous baseline** for evaluating AI improvements.
+The Vehicle-Actuated controller represents the current state-of-the-art in traffic engineering, used in most modern intersections worldwide. It implements realistic features including minimum/maximum green times, vehicle detection thresholds, and demand-responsive phase switching - this makes it the toughest competitor against the agent.
 
 The current testing methodology ensures fairness by running all controllers under identical conditions across three time scales: 120 steps/5 episodes, 1440 steps/3 episodes, and 5760 steps/2 episodes respectively. Each scale uses the same SUMO configuration and traffic demand patterns, with statistical measures calculated for comprehensive performance validation.
 
@@ -82,7 +82,6 @@ _\*Vehicle-Actuated represents current industry-standard traffic control technol
 - **Outperforms industry-standard technology** – achieves 77-89% better performance than current actuated controllers used in real intersections
 - **Performance gap widens over time** – RL agent's advantage over actuated controllers increases from 77% to 89% in longer simulations
 - **Validates against realistic baselines** – comparison includes Vehicle-Actuated controllers that represent current traffic engineering practice
-- **Demonstrates genuine AI advancement** – shows meaningful improvement over sophisticated, not just simplistic, control systems
 
 <p align="center">
   <img alt="Multi-Scale Performance Comparison" src="results/phase_1_multi_scale_validation/visualizations/performance_comparison.png" width="80%">
