@@ -26,7 +26,7 @@ This project moves beyond that baseline to ask a more meaningful question:
 
 > _Can a reinforcement-learning agent learn to run a single intersection better than a modern, rule-based, actuated controller?_
 
-The answer is **yes—by a dramatic margin.** The trained PPO agent achieves a **77-89%** reduction in vehicle wait time compared to industry standard, actuated traffic controllers and a **98.6% reduction in vehicle wait times** when compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
+The answer is **yes—by a dramatic margin.** The trained PPO agent achieves a **77-89% reduction in vehicle wait time** compared to industry standard, actuated traffic controllers and a **98.6% reduction** when compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
 
 ---
 
@@ -43,7 +43,7 @@ This project was planned to be fairly iterative from the beginning. I started wo
 **Goal:** Train a PPO agent that decisively outperforms traditional traffic control strategies across realistic time horizons.  
 **Outcome:** **77-89% better performance** than industry-standard actuated controllers, with the advantage increasing over longer time periods.
 
-Phase 1 consisted of training one PPO agent (training details found here <- need to link training config later in readme), and creating three baseline controllers for comprehensive comparison. These include traditional fixed-time controllers, adaptive fixed-time variants, and industry-standard vehicle-actuated controllers that represent current real-world technology.
+Phase 1 consisted of training one PPO agent (further training details can be found in configs/training_config.yaml and src/training/train_agent.py), and creating three baseline controllers for comprehensive comparison. These include traditional fixed-time controllers, adaptive fixed-time variants, and industry-standard vehicle-actuated controllers that represent current real-world technology.
 
 After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario. The comparison script evolved into a robust multi-scale validation system comparing four distinct traffic control approaches:
 
