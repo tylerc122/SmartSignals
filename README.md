@@ -41,13 +41,20 @@ This project was planned to be iterative from the beginning. I started work in M
 ### Phase 1 – Multi-Scale Performance Validation <a name="phase-1"></a>
 
 **Goal:** Train a PPO agent that decisively outperforms traditional traffic control strategies across realistic time horizons.  
-**Outcome:** **98.6% reduction** in vehicle wait times with performance improving over longer time periods.
+**Outcome:** **77-89% better performance** than industry-standard actuated controllers, with the advantage increasing over longer time periods.
 
-Phase 1 consisted of training one PPO agent (training details found here <- need to link training config later in readme), and creating two baseline controllers. The first baseline controller was on a fixed time schedule (30s green each direction creating a 2 minute schedule) and the other a slightly smarter fixed-time controller with different timing patterns allowing for asymmetric timing (e.g., longer green for busy directions, this is the one that most closely mimics real traffic lights).
+Phase 1 consisted of training one PPO agent (training details found here <- need to link training config later in readme), and creating three baseline controllers for comprehensive comparison. These include traditional fixed-time controllers, adaptive fixed-time variants, and industry-standard vehicle-actuated controllers that represent current real-world technology.
 
-After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario. The comparison script started out as a simple 10-minute testing period comparing all three controllers. Through an iterative process, it evolved into a more robust multi-scale validation system supporting short-term (10 minutes), medium-term (2 hours), and long-term (8 hours) testing durations. This evolution yielded much stronger evidence as the agent's performance advantages became more pronounced with longer test durations compared to the baseline controllers.
+After training and building each respective controller, a comparison script was written in order to have verifiable data that our agent was actually making good decisions within a given traffic scenario. The comparison script evolved into a robust multi-scale validation system comparing **four distinct traffic control approaches**:
 
-The current testing methodology ensures fairness by running all controllers under identical conditions across these three time scales: 120 steps/5 episodes, 1440 steps/3 episodes, and 5760 steps/2 episodes respectively. Each scale uses the same SUMO configuration and traffic demand patterns, with statistical measures calculated for comprehensive performance validation.
+1. **Fixed-Time Controller** - Traditional traffic lights with rigid timing (legacy technology)
+2. **Adaptive Fixed-Time Controller** - Pre-optimized timing patterns for different directions
+3. **Vehicle-Actuated Controller** - Industry-standard technology that responds to real-time vehicle detection (current practice)
+4. **RL Agent** - Our AI-powered adaptive controller (proposed innovation)
+
+The Vehicle-Actuated controller represents the current state-of-the-art in traffic engineering, used in most modern intersections worldwide. It implements realistic features including minimum/maximum green times, vehicle detection thresholds, and demand-responsive phase switching - making it a **scientifically rigorous baseline** for evaluating AI improvements.
+
+The current testing methodology ensures fairness by running all controllers under identical conditions across three time scales: 120 steps/5 episodes, 1440 steps/3 episodes, and 5760 steps/2 episodes respectively. Each scale uses the same SUMO configuration and traffic demand patterns, with statistical measures calculated for comprehensive performance validation.
 
 For each episode, the script collects key metrics:
 
@@ -62,18 +69,20 @@ The comparison script automatically handles environment resets, action execution
 
 _Average waiting time per vehicle (seconds):_
 
-| Time Scale      | Duration   | RL Agent   | Adaptive Fixed | Fixed-Time | **RL Improvement**                  |
-| --------------- | ---------- | ---------- | -------------- | ---------- | ----------------------------------- |
-| **Short-term**  | 10 minutes | **0.074s** | 2.313s         | 2.812s     | **97.4% reduction in waiting time** |
-| **Medium-term** | 2 hours    | **0.018s** | 0.972s         | 1.122s     | **98.4% reduction in waiting time** |
-| **Long-term**   | 8 hours    | **0.004s** | 0.243s         | 0.280s     | **98.6% reduction in waiting time** |
+| Time Scale      | Duration   | RL Agent   | Vehicle-Actuated\* | Adaptive Fixed | Fixed-Time | **RL vs Industry Standard**    |
+| --------------- | ---------- | ---------- | ------------------ | -------------- | ---------- | ------------------------------ |
+| **Short-term**  | 10 minutes | **0.074s** | 0.326s             | 2.313s         | 2.812s     | **77.3% better than actuated** |
+| **Medium-term** | 2 hours    | **0.018s** | 0.140s             | 0.972s         | 1.122s     | **87.1% better than actuated** |
+| **Long-term**   | 8 hours    | **0.004s** | 0.035s             | 0.243s         | 0.280s     | **88.6% better than actuated** |
+
+_\*Vehicle-Actuated represents current industry-standard traffic control technology_
 
 **Key Insights:**
 
-- **Performance improves with longer time horizons** – the agent optimizes better for sustained traffic patterns
-- **98.6% wait time reduction** achieved over 8-hour simulations – exceeding initial 50% improvement targets
-- **139× better system performance** (reward ratio) demonstrates massive efficiency gains
-- **22.7 total hours simulated** across all tests for robust testing
+- **Outperforms industry-standard technology** – achieves 77-89% better performance than current actuated controllers used in real intersections
+- **Performance gap widens over time** – RL agent's advantage over actuated controllers increases from 77% to 89% in longer simulations
+- **Validates against realistic baselines** – comparison includes Vehicle-Actuated controllers that represent current traffic engineering practice
+- **Demonstrates genuine AI advancement** – shows meaningful improvement over sophisticated, not just simplistic, control systems
 
 <p align="center">
   <img alt="Multi-Scale Performance Comparison" src="results/phase_1_multi_scale_validation/visualizations/performance_comparison.png" width="80%">
@@ -83,7 +92,7 @@ _Average waiting time per vehicle (seconds):_
   <img alt="Performance Scaling Over Time" src="results/phase_1_multi_scale_validation/visualizations/performance_scaling.png" width="80%">
 </p>
 
-The multi-scale analysis proves that the RL agent not only provides immediate improvements but maintains and enhances performance over extended operational periods.
+The multi-scale analysis proves that the RL agent consistently outperforms industry-standard technology across all time horizons, with performance advantages becoming more pronounced during sustained operation.
 
 ### Phase 2 – Stochastic Validation (Upcoming) <a name="phase-2"></a>
 
