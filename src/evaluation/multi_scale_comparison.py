@@ -22,7 +22,7 @@ import warnings
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from environments.sumo_traffic_env import SumoTrafficEnv
-from agents.fixed_time_controller import FixedTimeController, AdaptiveFixedTimeController
+from agents.fixed_time_controller import FixedTimeController, AdaptiveFixedTimeController, ActuatedController
 
 try:
     from stable_baselines3 import PPO
@@ -281,7 +281,16 @@ class MultiScaleTrafficComparison:
         )
         controllers_to_test.append((adaptive_controller, "Adaptive-Fixed"))
         
-        # 3. RL Agent (if available)
+        # 3. Actuated Controller (Industry Standard)
+        actuated_controller = ActuatedController(
+            min_green_time=2,    # 10 seconds minimum green
+            max_green_time=10,   # 50 seconds maximum green
+            detection_threshold=1,  # 1 vehicle triggers phase
+            step_duration=5
+        )
+        controllers_to_test.append((actuated_controller, "Vehicle-Actuated"))
+        
+        # 4. RL Agent (if available)
         if rl_model_path and SB3_AVAILABLE and os.path.exists(rl_model_path):
             try:
                 rl_agent = PPO.load(rl_model_path)

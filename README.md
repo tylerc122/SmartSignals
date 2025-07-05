@@ -20,9 +20,11 @@ A practical exploration of how modern RL techniques can dramatically improve int
 
 ## Introduction
 
-Traditional traffic lights run on fixed schedules. They ignore real-time conditions, creating unnecessary stops, congestion, and emissions. This project asks a simple question:
+Today's traffic signals have evolved beyond simple fixed timers. The current standard is the actuated controller, which uses sensors to avoid wasting green time on empty lanes. However, this system's decision-making is rudimentary, bound by rigid rules that prevent it from learning or adapting to complex traffic dynamics.
 
-> _Can a reinforcement-learning agent learn to run a single intersection better than a hand-crafted, static, schedule?_
+This project moves beyond that baseline to ask a more meaningful question:
+
+> _Can a reinforcement-learning agent learn to run a single intersection better than a modern, rule-based, actuated controller?_
 
 The answer is **yes—by a dramatic margin.** The trained PPO agent achieves **98.6% reduction in vehicle wait times** compared to traditional fixed-time signals, with performance improving over longer time horizons. Comprehensive testing across 22.7 hours of simulated traffic validates real-world deployment potential.
 
