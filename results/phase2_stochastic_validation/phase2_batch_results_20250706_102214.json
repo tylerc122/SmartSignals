@@ -1,0 +1,768 @@
+{
+  "metadata": {
+    "num_scenarios": 10,
+    "episode_length": 120,
+    "timestamp": "20250706_102214",
+    "total_runtime": 1.8166799545288086
+  },
+  "scenarios": [
+    {
+      "scenario_id": "balanced_light_20250706_102212_9090",
+      "pattern_name": "balanced_light",
+      "description": "Light traffic, balanced in all directions",
+      "base_demand": 100,
+      "direction_multipliers": {
+        "n2s": 0.8529467491341198,
+        "s2n": 1.0234557473156376,
+        "e2w": 0.9603498196920655,
+        "w2e": 0.9132594326472193
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_light_20250706_102212_9090/balanced_light_20250706_102212_9090.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_light_20250706_102212_9090/balanced_light_20250706_102212_9090.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.732581"
+    },
+    {
+      "scenario_id": "balanced_moderate_20250706_102212_5095",
+      "pattern_name": "balanced_moderate",
+      "description": "Moderate traffic, balanced in all directions",
+      "base_demand": 200,
+      "direction_multipliers": {
+        "n2s": 1.0041214045861786,
+        "s2n": 0.9291725339365734,
+        "e2w": 0.90410034018257,
+        "w2e": 0.9987754798917057
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_moderate_20250706_102212_5095/balanced_moderate_20250706_102212_5095.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_moderate_20250706_102212_5095/balanced_moderate_20250706_102212_5095.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.732958"
+    },
+    {
+      "scenario_id": "balanced_heavy_20250706_102212_4145",
+      "pattern_name": "balanced_heavy",
+      "description": "Heavy traffic, balanced in all directions",
+      "base_demand": 400,
+      "direction_multipliers": {
+        "n2s": 1.0450412617200149,
+        "s2n": 0.9324195433308933,
+        "e2w": 1.0489711770604628,
+        "w2e": 1.114101570527001
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_heavy_20250706_102212_4145/balanced_heavy_20250706_102212_4145.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_heavy_20250706_102212_4145/balanced_heavy_20250706_102212_4145.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.733303"
+    },
+    {
+      "scenario_id": "rush_hour_ns_20250706_102212_8698",
+      "pattern_name": "rush_hour_ns",
+      "description": "Rush hour with heavy north-south flow",
+      "base_demand": 300,
+      "direction_multipliers": {
+        "n2s": 1.5043161228947697,
+        "s2n": 1.590438040706392,
+        "e2w": 0.5222866564076226,
+        "w2e": 0.7071392112212807
+      },
+      "turning_ratios": {
+        "through": 0.7,
+        "right": 0.2,
+        "left": 0.1
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/rush_hour_ns_20250706_102212_8698/rush_hour_ns_20250706_102212_8698.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/rush_hour_ns_20250706_102212_8698/rush_hour_ns_20250706_102212_8698.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.733659"
+    },
+    {
+      "scenario_id": "rush_hour_ew_20250706_102212_6843",
+      "pattern_name": "rush_hour_ew",
+      "description": "Rush hour with heavy east-west flow",
+      "base_demand": 300,
+      "direction_multipliers": {
+        "n2s": 0.7615381941362628,
+        "s2n": 0.5679675466007221,
+        "e2w": 1.3368652366394396,
+        "w2e": 1.6508019349615934
+      },
+      "turning_ratios": {
+        "through": 0.7,
+        "right": 0.2,
+        "left": 0.1
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/rush_hour_ew_20250706_102212_6843/rush_hour_ew_20250706_102212_6843.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/rush_hour_ew_20250706_102212_6843/rush_hour_ew_20250706_102212_6843.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.734124"
+    },
+    {
+      "scenario_id": "unbalanced_north_heavy_20250706_102212_1346",
+      "pattern_name": "unbalanced_north_heavy",
+      "description": "Heavy northbound traffic, light other directions",
+      "base_demand": 250,
+      "direction_multipliers": {
+        "n2s": 0.2988391810792078,
+        "s2n": 2.06734726221152,
+        "e2w": 0.9021189377986897,
+        "w2e": 1.025925732109442
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/unbalanced_north_heavy_20250706_102212_1346/unbalanced_north_heavy_20250706_102212_1346.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/unbalanced_north_heavy_20250706_102212_1346/unbalanced_north_heavy_20250706_102212_1346.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.734457"
+    },
+    {
+      "scenario_id": "unbalanced_east_heavy_20250706_102212_8177",
+      "pattern_name": "unbalanced_east_heavy",
+      "description": "Heavy eastbound traffic, light other directions",
+      "base_demand": 250,
+      "direction_multipliers": {
+        "n2s": 0.7177669449854905,
+        "s2n": 0.7847498235475875,
+        "e2w": 0.25637714330307076,
+        "w2e": 1.985451309312846
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/unbalanced_east_heavy_20250706_102212_8177/unbalanced_east_heavy_20250706_102212_8177.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/unbalanced_east_heavy_20250706_102212_8177/unbalanced_east_heavy_20250706_102212_8177.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.734791"
+    },
+    {
+      "scenario_id": "emergency_spike_20250706_102212_2416",
+      "pattern_name": "emergency_spike",
+      "description": "Sudden traffic spike in one direction (emergency, event)",
+      "base_demand": 150,
+      "direction_multipliers": {
+        "n2s": 2.5556815475425636,
+        "s2n": 0.2174967892657711,
+        "e2w": 0.42584377914690863,
+        "w2e": 0.2785349641177785
+      },
+      "turning_ratios": {
+        "through": 0.8,
+        "right": 0.15,
+        "left": 0.05
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/emergency_spike_20250706_102212_2416/emergency_spike_20250706_102212_2416.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/emergency_spike_20250706_102212_2416/emergency_spike_20250706_102212_2416.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.735122"
+    },
+    {
+      "scenario_id": "event_dispersal_20250706_102212_6683",
+      "pattern_name": "event_dispersal",
+      "description": "Event ending - heavy outbound from all directions",
+      "base_demand": 350,
+      "direction_multipliers": {
+        "n2s": 1.2034952519540256,
+        "s2n": 1.169077148318909,
+        "e2w": 1.2628889213961203,
+        "w2e": 1.3791342611651918
+      },
+      "turning_ratios": {
+        "through": 0.5,
+        "right": 0.3,
+        "left": 0.2
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/event_dispersal_20250706_102212_6683/event_dispersal_20250706_102212_6683.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/event_dispersal_20250706_102212_6683/event_dispersal_20250706_102212_6683.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.735477"
+    },
+    {
+      "scenario_id": "off_peak_light_20250706_102212_8476",
+      "pattern_name": "off_peak_light",
+      "description": "Late night/early morning light traffic",
+      "base_demand": 50,
+      "direction_multipliers": {
+        "n2s": 0.7964972347630197,
+        "s2n": 1.130016727873896,
+        "e2w": 0.929337327198224,
+        "w2e": 0.9698273403358679
+      },
+      "turning_ratios": {
+        "through": 0.5,
+        "right": 0.3,
+        "left": 0.2
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/off_peak_light_20250706_102212_8476/off_peak_light_20250706_102212_8476.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/off_peak_light_20250706_102212_8476/off_peak_light_20250706_102212_8476.rou.xml",
+      "generated_at": "2025-07-06T10:22:12.735955"
+    }
+  ],
+  "controllers": {
+    "fixed_time": {
+      "name": "Fixed-Time Controller",
+      "description": "Traditional traffic lights with rigid timing",
+      "type": "baseline"
+    },
+    "adaptive_fixed": {
+      "name": "Adaptive Fixed-Time Controller",
+      "description": "Pre-optimized timing patterns",
+      "type": "baseline"
+    },
+    "actuated": {
+      "name": "Vehicle-Actuated Controller",
+      "description": "Industry-standard technology (current practice)",
+      "type": "industry_standard"
+    },
+    "rl_agent": {
+      "name": "RL Agent (PPO)",
+      "description": "AI-powered adaptive controller",
+      "type": "rl_agent",
+      "model_path": null
+    }
+  },
+  "results": [
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102212_9090",
+      "pattern_type": "balanced_light",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102212_5095",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102212_4145",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 3,
+      "scenario_id": "rush_hour_ns_20250706_102212_8698",
+      "pattern_type": "rush_hour_ns",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 4,
+      "scenario_id": "rush_hour_ew_20250706_102212_6843",
+      "pattern_type": "rush_hour_ew",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 5,
+      "scenario_id": "unbalanced_north_heavy_20250706_102212_1346",
+      "pattern_type": "unbalanced_north_heavy",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 6,
+      "scenario_id": "unbalanced_east_heavy_20250706_102212_8177",
+      "pattern_type": "unbalanced_east_heavy",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 7,
+      "scenario_id": "emergency_spike_20250706_102212_2416",
+      "pattern_type": "emergency_spike",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 8,
+      "scenario_id": "event_dispersal_20250706_102212_6683",
+      "pattern_type": "event_dispersal",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 9,
+      "scenario_id": "off_peak_light_20250706_102212_8476",
+      "pattern_type": "off_peak_light",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102212_9090",
+      "pattern_type": "balanced_light",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102212_5095",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102212_4145",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 3,
+      "scenario_id": "rush_hour_ns_20250706_102212_8698",
+      "pattern_type": "rush_hour_ns",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 4,
+      "scenario_id": "rush_hour_ew_20250706_102212_6843",
+      "pattern_type": "rush_hour_ew",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 5,
+      "scenario_id": "unbalanced_north_heavy_20250706_102212_1346",
+      "pattern_type": "unbalanced_north_heavy",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 6,
+      "scenario_id": "unbalanced_east_heavy_20250706_102212_8177",
+      "pattern_type": "unbalanced_east_heavy",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 7,
+      "scenario_id": "emergency_spike_20250706_102212_2416",
+      "pattern_type": "emergency_spike",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 8,
+      "scenario_id": "event_dispersal_20250706_102212_6683",
+      "pattern_type": "event_dispersal",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 9,
+      "scenario_id": "off_peak_light_20250706_102212_8476",
+      "pattern_type": "off_peak_light",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102212_9090",
+      "pattern_type": "balanced_light",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102212_5095",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102212_4145",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 3,
+      "scenario_id": "rush_hour_ns_20250706_102212_8698",
+      "pattern_type": "rush_hour_ns",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 4,
+      "scenario_id": "rush_hour_ew_20250706_102212_6843",
+      "pattern_type": "rush_hour_ew",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 5,
+      "scenario_id": "unbalanced_north_heavy_20250706_102212_1346",
+      "pattern_type": "unbalanced_north_heavy",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 6,
+      "scenario_id": "unbalanced_east_heavy_20250706_102212_8177",
+      "pattern_type": "unbalanced_east_heavy",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 7,
+      "scenario_id": "emergency_spike_20250706_102212_2416",
+      "pattern_type": "emergency_spike",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 8,
+      "scenario_id": "event_dispersal_20250706_102212_6683",
+      "pattern_type": "event_dispersal",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 9,
+      "scenario_id": "off_peak_light_20250706_102212_8476",
+      "pattern_type": "off_peak_light",
+      "controller_id": "actuated",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102212_9090",
+      "pattern_type": "balanced_light",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102212_5095",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102212_4145",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 3,
+      "scenario_id": "rush_hour_ns_20250706_102212_8698",
+      "pattern_type": "rush_hour_ns",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 4,
+      "scenario_id": "rush_hour_ew_20250706_102212_6843",
+      "pattern_type": "rush_hour_ew",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 5,
+      "scenario_id": "unbalanced_north_heavy_20250706_102212_1346",
+      "pattern_type": "unbalanced_north_heavy",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 6,
+      "scenario_id": "unbalanced_east_heavy_20250706_102212_8177",
+      "pattern_type": "unbalanced_east_heavy",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 7,
+      "scenario_id": "emergency_spike_20250706_102212_2416",
+      "pattern_type": "emergency_spike",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 8,
+      "scenario_id": "event_dispersal_20250706_102212_6683",
+      "pattern_type": "event_dispersal",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 9,
+      "scenario_id": "off_peak_light_20250706_102212_8476",
+      "pattern_type": "off_peak_light",
+      "controller_id": "rl_agent",
+      "success": false,
+      "error": "Connection 'default' is already active.",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    }
+  ],
+  "analysis": {
+    "error": "No successful runs to analyze"
+  }
+}

@@ -65,6 +65,61 @@ class EnhancedSumoTrafficEnv(SumoTrafficEnv):
         print(f"   Detailed statistics: {'✅' if track_detailed_stats else '❌'}")
         print(f"   Phase 2 ready: ✅")
     
+    def _start_sumo(self):
+        """Start SUMO simulation with improved connection management for batch processing."""
+        # Force close any existing connections first
+        try:
+            traci.close()
+        except:
+            pass  # Ignore if no connection exists
+        
+        self.is_connected = False
+            
+        # Use command if already set (for GUI), otherwise default to headless
+        if self.sumo_cmd is None:
+            self.sumo_cmd = ["sumo", "-c", self.sumo_config_file, 
+                             "--no-step-log", "--no-warnings"]
+        
+        # For GUI mode, add extra startup time and error handling
+        is_gui = "sumo-gui" in self.sumo_cmd[0]
+        
+        try:
+            if is_gui:
+                print("Starting SUMO GUI")
+                import time
+                time.sleep(2)  # Give GUI time to start
+            
+            # Start SUMO with explicit connection management
+            traci.start(self.sumo_cmd)
+            self.is_connected = True
+            
+            if is_gui:
+                print("✅ SUMO GUI connected successfully!")
+                # Extra pause to let GUI fully initialize
+                time.sleep(1)
+            
+        except Exception as e:
+            print(f"❌ Failed to start SUMO: {e}")
+            if is_gui:
+                print("XQuartz?")
+            # Try to clean up before re-raising
+            try:
+                traci.close()
+            except:
+                pass
+            raise
+        
+        # Verify traffic light exists
+        try:
+            if self.traffic_light_id not in traci.trafficlight.getIDList():
+                available_tls = traci.trafficlight.getIDList()
+                raise ValueError(f"Traffic light '{self.traffic_light_id}' not found. "
+                               f"Available traffic lights: {available_tls}")
+        except Exception as e:
+            print(f"❌ Traffic light verification failed: {e}")
+            self._close_sumo()
+            raise
+    
     def reset_episode_stats(self):
         """Reset all episode-level statistics tracking."""
         # Basic stats (from original environment)

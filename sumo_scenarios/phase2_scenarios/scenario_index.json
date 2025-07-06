@@ -1,0 +1,48 @@
+{
+  "generated_at": "2025-07-06T13:12:49.357898",
+  "total_scenarios": 2,
+  "scenarios": [
+    {
+      "scenario_id": "balanced_light_20250706_131249_5926",
+      "pattern_name": "balanced_light",
+      "description": "Light traffic, balanced in all directions",
+      "base_demand": 100,
+      "direction_multipliers": {
+        "n2s": 1.0623525556539342,
+        "s2n": 1.028894911552756,
+        "e2w": 0.9665691991633114,
+        "w2e": 1.0846188343018932
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 60,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_light_20250706_131249_5926/balanced_light_20250706_131249_5926.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_light_20250706_131249_5926/balanced_light_20250706_131249_5926.rou.xml",
+      "generated_at": "2025-07-06T13:12:49.357503"
+    },
+    {
+      "scenario_id": "balanced_moderate_20250706_131249_1916",
+      "pattern_name": "balanced_moderate",
+      "description": "Moderate traffic, balanced in all directions",
+      "base_demand": 200,
+      "direction_multipliers": {
+        "n2s": 0.9236313367490718,
+        "s2n": 1.1388649409305087,
+        "e2w": 0.9845738243776362,
+        "w2e": 0.9540581088660942
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 60,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_moderate_20250706_131249_1916/balanced_moderate_20250706_131249_1916.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_moderate_20250706_131249_1916/balanced_moderate_20250706_131249_1916.rou.xml",
+      "generated_at": "2025-07-06T13:12:49.357877"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "metadata": {
+    "num_scenarios": 3,
+    "episode_length": 120,
+    "timestamp": "20250706_102338",
+    "total_runtime": 13.527544975280762
+  },
+  "scenarios": [
+    {
+      "scenario_id": "balanced_light_20250706_102324_3896",
+      "pattern_name": "balanced_light",
+      "description": "Light traffic, balanced in all directions",
+      "base_demand": 100,
+      "direction_multipliers": {
+        "n2s": 0.94925865076351,
+        "s2n": 1.0844049945517666,
+        "e2w": 0.8772906526399066,
+        "w2e": 1.0074242208030495
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_light_20250706_102324_3896/balanced_light_20250706_102324_3896.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_light_20250706_102324_3896/balanced_light_20250706_102324_3896.rou.xml",
+      "generated_at": "2025-07-06T10:23:24.873660"
+    },
+    {
+      "scenario_id": "balanced_moderate_20250706_102324_4779",
+      "pattern_name": "balanced_moderate",
+      "description": "Moderate traffic, balanced in all directions",
+      "base_demand": 200,
+      "direction_multipliers": {
+        "n2s": 0.9545623522363206,
+        "s2n": 1.0981318020231372,
+        "e2w": 0.9691759461073188,
+        "w2e": 0.9959642720715668
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_moderate_20250706_102324_4779/balanced_moderate_20250706_102324_4779.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_moderate_20250706_102324_4779/balanced_moderate_20250706_102324_4779.rou.xml",
+      "generated_at": "2025-07-06T10:23:24.874103"
+    },
+    {
+      "scenario_id": "balanced_heavy_20250706_102324_9404",
+      "pattern_name": "balanced_heavy",
+      "description": "Heavy traffic, balanced in all directions",
+      "base_demand": 400,
+      "direction_multipliers": {
+        "n2s": 0.9750234217351327,
+        "s2n": 0.9630763753222706,
+        "e2w": 0.9850939903142172,
+        "w2e": 1.0527605786086072
+      },
+      "turning_ratios": {
+        "through": 0.6,
+        "right": 0.25,
+        "left": 0.15
+      },
+      "simulation_duration": 120,
+      "config_file": "sumo_scenarios/phase2_scenarios/balanced_heavy_20250706_102324_9404/balanced_heavy_20250706_102324_9404.sumocfg",
+      "route_file": "sumo_scenarios/phase2_scenarios/balanced_heavy_20250706_102324_9404/balanced_heavy_20250706_102324_9404.rou.xml",
+      "generated_at": "2025-07-06T10:23:24.874504"
+    }
+  ],
+  "controllers": {
+    "fixed_time": {
+      "name": "Fixed-Time Controller",
+      "description": "Traditional traffic lights with rigid timing",
+      "type": "baseline"
+    },
+    "adaptive_fixed": {
+      "name": "Adaptive Fixed-Time Controller",
+      "description": "Pre-optimized timing patterns",
+      "type": "baseline"
+    },
+    "actuated": {
+      "name": "Vehicle-Actuated Controller",
+      "description": "Industry-standard technology (current practice)",
+      "type": "industry_standard"
+    },
+    "rl_agent": {
+      "name": "RL Agent (PPO)",
+      "description": "AI-powered adaptive controller",
+      "type": "rl_agent",
+      "model_path": null
+    }
+  },
+  "results": [
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102324_3896",
+      "pattern_type": "balanced_light",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102324_4779",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102324_9404",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "fixed_time",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102324_3896",
+      "pattern_type": "balanced_light",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102324_4779",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102324_9404",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "adaptive_fixed",
+      "success": false,
+      "error": "FixedTimeController.__init__() got an unexpected keyword argument 'green_time'",
+      "avg_waiting_time": 9999,
+      "max_waiting_time": 9999,
+      "total_reward": -9999,
+      "phase_changes": 0,
+      "vehicle_count": 0
+    },
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102324_3896",
+      "pattern_type": "balanced_light",
+      "controller_id": "actuated",
+      "success": true,
+      "error": null,
+      "avg_waiting_time": 0.22463768115942032,
+      "max_waiting_time": 11.0,
+      "total_reward": -46.0,
+      "phase_changes": 3,
+      "vehicle_count": 135,
+      "episode_steps": 23
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102324_4779",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "actuated",
+      "success": true,
+      "error": null,
+      "avg_waiting_time": 0.4077024827024827,
+      "max_waiting_time": 11.0,
+      "total_reward": -95.0,
+      "phase_changes": 6,
+      "vehicle_count": 228,
+      "episode_steps": 24
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102324_9404",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "actuated",
+      "success": true,
+      "error": null,
+      "avg_waiting_time": 2.583868851328203,
+      "max_waiting_time": 36.0,
+      "total_reward": -1456.0,
+      "phase_changes": 3,
+      "vehicle_count": 513,
+      "episode_steps": 24
+    },
+    {
+      "scenario_index": 0,
+      "scenario_id": "balanced_light_20250706_102324_3896",
+      "pattern_type": "balanced_light",
+      "controller_id": "rl_agent",
+      "success": true,
+      "error": null,
+      "avg_waiting_time": 0.021739130434782608,
+      "max_waiting_time": 1.0,
+      "total_reward": -4.0,
+      "phase_changes": 23,
+      "vehicle_count": 129,
+      "episode_steps": 23
+    },
+    {
+      "scenario_index": 1,
+      "scenario_id": "balanced_moderate_20250706_102324_4779",
+      "pattern_type": "balanced_moderate",
+      "controller_id": "rl_agent",
+      "success": true,
+      "error": null,
+      "avg_waiting_time": 0.03507834757834758,
+      "max_waiting_time": 2.0,
+      "total_reward": -6.0,
+      "phase_changes": 23,
+      "vehicle_count": 219,
+      "episode_steps": 24
+    },
+    {
+      "scenario_index": 2,
+      "scenario_id": "balanced_heavy_20250706_102324_9404",
+      "pattern_type": "balanced_heavy",
+      "controller_id": "rl_agent",
+      "success": true,
+      "error": null,
+      "avg_waiting_time": 0.09469501767295885,
+      "max_waiting_time": 3.0,
+      "total_reward": -38.0,
+      "phase_changes": 23,
+      "vehicle_count": 406,
+      "episode_steps": 24
+    }
+  ],
+  "analysis": {
+    "summary": {
+      "actuated": {
+        "name": "Vehicle-Actuated Controller",
+        "total_runs": 3,
+        "successful_runs": 3,
+        "avg_waiting_time": {
+          "mean": 1.0720696717300353,
+          "std": 1.3124521895925465,
+          "min": 0.22463768115942032,
+          "max": 2.583868851328203,
+          "median": 0.4077024827024827
+        },
+        "max_waiting_time": {
+          "mean": 19.333333333333332,
+          "std": 14.433756729740644,
+          "min": 11.0,
+          "max": 36.0,
+          "median": 11.0
+        }
+      },
+      "rl_agent": {
+        "name": "RL Agent (PPO)",
+        "total_runs": 3,
+        "successful_runs": 3,
+        "avg_waiting_time": {
+          "mean": 0.05050416522869635,
+          "std": 0.03884722973795854,
+          "min": 0.021739130434782608,
+          "max": 0.09469501767295885,
+          "median": 0.03507834757834758
+        },
+        "max_waiting_time": {
+          "mean": 2.0,
+          "std": 1.0,
+          "min": 1.0,
+          "max": 3.0,
+          "median": 2.0
+        }
+      }
+    },
+    "statistical_tests": {
+      "rl_vs_actuated": {
+        "avg_waiting_time": {
+          "t_statistic": -1.347575780140869,
+          "p_value": 0.24906321104241824,
+          "significant": 
