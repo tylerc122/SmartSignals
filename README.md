@@ -95,7 +95,7 @@ The multi-scale analysis proves that the RL agent consistently outperforms indus
 
 ### Phase 2 – Stochastic Validation (Upcoming) <a name="phase-2"></a>
 
-- Generate 100 + traffic scenarios with varying demand patterns.
+- Generate 500 + traffic scenarios with varying demand patterns.
 - Validate that improvements hold for worst-case (maximum) wait times.
 
 ### Phase 3 – Multi-Agent Expansion (Upcoming) <a name="phase-3"></a>
@@ -105,53 +105,7 @@ The multi-scale analysis proves that the RL agent consistently outperforms indus
 
 ---
 
-## Getting Started <a name="getting-started"></a>
-
-```bash
-# clone repository
-$ git clone https://github.com/tylerc122/SmartSignals.git
-$ cd SmartSignals
-
-# install dependencies (Python 3.8+)
-$ pip install -r requirements.txt
-
-# run complete multi-scale analysis
-$ python run_multi_scale_analysis.py
-
-# or run individual components
-$ python src/evaluation/multi_scale_comparison.py
-$ python src/evaluation/create_clean_charts.py
-```
-
-Training scripts (`src/training/`) allow you to retrain or experiment with alternative algorithms.
-
----
-
-## Project Structure <a name="project-structure"></a>
-
-```
-SmartSignals/
-├── src/
-│   ├── environments/   # SUMO-based Gymnasium environment
-│   ├── agents/         # RL and baseline controllers
-│   ├── training/       # Training scripts
-│   ├── evaluation/     # Comparison & visualization tools
-│   └── utils/          # Helper functions
-├── sumo_scenarios/     # Network / route definitions
-├── results/
-│   ├── phase_1_multi_scale_validation/  # Multi-scale test results
-│   └── visualizations/                  # Generated charts
-├── configs/            # Training configuration files
-├── models/             # Saved RL models (git-ignored)
-├── data/               # Raw data storage
-├── logs/               # Training logs (git-ignored)
-├── tests/              # Unit tests
-├── run_multi_scale_analysis.py  # Main analysis runner
-├── test_environment.py          # Environment testing
-└── start_gui.sh                 # SUMO GUI launcher
-```
-
----
+#### Add back get started + project structure later
 
 ## Research & Methodology <a name="research--methodology"></a>
 

@@ -3,7 +3,7 @@ Traffic Scenario Generator for Phase 2!!
 
 traffic_scenario_generator.py generates diverse traffic demand patterns to test the robustness
 of our RL agent across realistic traffic conditions. Instead of using a single
-fixed pattern, it creates 100+ (for now) varied scenarios to validate performance.
+fixed pattern, it creates 500+ varied scenarios to validate performance.
 
 Essentially, we take 11 prebuilt traffic patterns with their own intrinsic qualities, i.e one has heavy
 north-south traffic, light east-west traffic and a different one has even distribution of traffic. We then
