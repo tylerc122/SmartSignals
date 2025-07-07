@@ -173,20 +173,13 @@ To test against our agent, we compared it against the same exact three baseline 
   <img alt="Phase 2 Maximum Wait Time Comparison" src="results/phase2_stochastic_validation/visualizations/phase2_maximum_wait_time.png" width="80%">
 </p>
 
-**Key Insights:**
-
-- **Consistent superiority** – RL agent outperforms industry standards across all 500 diverse scenarios
-- **Robust worst-case performance** – 80.5% improvement in maximum wait times proves reliability under stress
-- **Statistical confidence** – Results are statistically significant with 95% confidence intervals
-- **Real-world readiness** – Performance validated across comprehensive traffic pattern diversity
-
 #### Failure Analysis & Edge Cases
 
-While the RL agent demonstrated consistent superiority across all 500 scenarios, analysis revealed interesting patterns in relative performance:
+While the RL agent excelled consistently across all 500 scenarios, analysis revealed some pretty cool patterns in relative performance:
 
 - **Strongest advantage**: Emergency/event scenarios where rapid adaptation is crucial (up to 98% improvement)
 - **Smallest advantage**: Very light traffic conditions where all controllers perform well (still 60-70% improvement)
-- **No failure modes**: The agent never performed worse than baseline controllers in any scenario
+- **No failure modes**: The agent never performed worse than baseline controllers in ANY scenario (Equivalent to 2019 Raptors post-season performance)
 - **Consistent behavior**: Performance variance across scenarios was lower than baseline controllers, indicating more predictable behavior
 
 The absence of failure modes is particularly significant—unlike rule-based controllers that can be "tricked" by unusual traffic patterns, the RL agent's learned policy generalizes robustly across diverse conditions.
@@ -199,8 +192,6 @@ The Phase 2 evaluation pipeline demonstrated the scalability of RL-based traffic
 - **Processing efficiency**: Batch evaluation reduced human oversight requirements to near-zero
 - **Reproducibility**: All scenarios deterministically generated with fixed random seeds
 - **Storage**: Results archived in JSON format for future analysis and comparison
-
-This infrastructure proves that RL traffic control can be validated at scale, addressing a common concern about the practical feasibility of comprehensive testing for safety-critical applications.
 
 ### Phase 3 – Multi-Agent Expansion (Upcoming) <a name="phase-3"></a>
 
