@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="13.89" guiShape="passenger" />
+    <route id="north_to_south" edges="n2c c2s" />
+    <route id="north_to_east" edges="n2c c2e" />
+    <route id="north_to_west" edges="n2c c2w" />
+    <route id="south_to_north" edges="s2c c2n" />
+    <route id="south_to_west" edges="s2c c2w" />
+    <route id="south_to_east" edges="s2c c2e" />
+    <route id="east_to_west" edges="e2c c2w" />
+    <route id="east_to_north" edges="e2c c2n" />
+    <route id="east_to_south" edges="e2c c2s" />
+    <route id="west_to_east" edges="w2c c2e" />
+    <route id="west_to_south" edges="w2c c2s" />
+    <route id="west_to_north" edges="w2c c2n" />
+    <flow id="flow_0" route="north_to_south" begin="0" end="300" vehsPerHour="146" type="car" />
+    <flow id="flow_1" route="north_to_east" begin="0" end="300" vehsPerHour="41" type="car" />
+    <flow id="flow_2" route="north_to_west" begin="0" end="300" vehsPerHour="20" type="car" />
+    <flow id="flow_3" route="south_to_north" begin="0" end="300" vehsPerHour="136" type="car" />
+    <flow id="flow_4" route="south_to_west" begin="0" end="300" vehsPerHour="39" type="car" />
+    <flow id="flow_5" route="south_to_east" begin="0" end="300" vehsPerHour="19" type="car" />
+    <flow id="flow_6" route="east_to_west" begin="0" end="300" vehsPerHour="315" type="car" />
+    <flow id="flow_7" route="east_to_north" begin="0" end="300" vehsPerHour="90" type="car" />
+    <flow id="flow_8" route="east_to_south" begin="0" end="300" vehsPerHour="45" type="car" />
+    <flow id="flow_9" route="west_to_east" begin="0" end="300" vehsPerHour="352" type="car" />
+    <flow id="flow_10" route="west_to_south" begin="0" end="300" vehsPerHour="100" type="car" />
+    <flow id="flow_11" route="west_to_north" begin="0" end="300" vehsPerHour="50" type="car" />
+</routes>

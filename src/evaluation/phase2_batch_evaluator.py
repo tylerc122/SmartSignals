@@ -580,14 +580,13 @@ class Phase2BatchEvaluator:
 
 
 def main():
-    """Main function for testing batch evaluator."""
-    print(" Testing Phase 2 Batch Evaluator")
-    print("=" * 50)
-    
-    # Test with small number for demonstration
+    """Main function for full Phase 2 batch evaluation."""
+    print(" Phase 2 Full Batch Evaluation - 500 Scenarios")
+    print("=" * 60)
+
     evaluator = Phase2BatchEvaluator(
-        num_scenarios=10,  # Small test run
-        episode_length=120,  # 2 minutes per scenario
+        num_scenarios=500,
+        episode_length=300,
         parallel_processes=1
     )
     

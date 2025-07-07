@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="../../cross_intersection.net.xml" />
+        <route-files value="balanced_heavy_20250706_132002_9940.rou.xml" />
+    </input>
+    <time>
+        <begin value="0" />
+        <end value="300" />
+        <step-length value="1" />
+    </time>
+    <report>
+        <verbose value="false" />
+        <no-step-log value="true" />
+        <duration-log.statistics value="true" />
+    </report>
+</configuration>
