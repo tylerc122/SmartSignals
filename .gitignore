@@ -9,3 +9,5 @@ src/evaluation/create_visualizations.py
 src/evaluation/create_clean_charts.py
 src/evaluation/create_multi_scale_visualizations.py
 __pycache__/
+run_full_phase2_evaluation.py
+phase2_results_visualizer.py
