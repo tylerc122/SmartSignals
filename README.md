@@ -26,7 +26,7 @@ This project moves beyond that baseline to ask a more meaningful question:
 
 > _Can a reinforcement-learning agent learn to run a single intersection better than a modern, rule-based, actuated controller?_
 
-The answer is **yes—by a dramatic margin.** Through comprehensive validation across diverse conditions, the trained PPO agent achieves:
+The answer is **yes, by a dramatic margin.** Through comprehensive validation across diverse conditions, the trained PPO agent achieves:
 
 - **94.1% improvement** in average wait time vs industry-standard actuated controllers
 - **80.5% improvement** in worst-case wait time vs industry-standard actuated controllers
@@ -182,7 +182,7 @@ While the RL agent excelled consistently across all 500 scenarios, analysis reve
 - **No failure modes**: The agent never performed worse than baseline controllers in ANY scenario (Equivalent to 2019 Raptors post-season performance)
 - **Consistent behavior**: Performance variance across scenarios was lower than baseline controllers, indicating more predictable behavior
 
-The absence of failure modes is particularly significant—unlike rule-based controllers that can be "tricked" by unusual traffic patterns, the RL agent's learned policy generalizes robustly across diverse conditions.
+The absence of failure modes is particularly significant, unlike rule-based controllers that can be "tricked" by unusual traffic patterns, the RL agent's learned policy generalizes robustly across diverse conditions.
 
 #### Computational & Implementation Notes
 
