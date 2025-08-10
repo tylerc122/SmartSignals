@@ -12,3 +12,12 @@ __pycache__/
 run_full_phase2_evaluation.py
 phase2_results_visualizer.py
 phase3.md
+create_grid_network.py
+customize_grid_network.py
+customize_grid.py
+setup_grid_network.py
+sumo_scenarios/grid_network/grid_4x4.net.xml
+sumo_scenarios/grid_network/grid_4x4.sumocfg
+sumo_scenarios/grid_network/grid_4x4_routes.xml
+sumo_scenarios/grid_network/gui-settings.xml
+sumo_scenarios/grid_network/urban_background.jpg
