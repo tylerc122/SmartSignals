@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/nodes_file.xsd">
+    <!-- 4x4 Grid Network with Traffic Lights -->
+    
+    <!-- Inner Nodes (Intersections with Traffic Lights) -->
+    <node id="c11" x="0" y="0" type="traffic_light"/>
+    <node id="c12" x="200" y="0" type="traffic_light"/>
+    <node id="c13" x="400" y="0" type="traffic_light"/>
+    <node id="c14" x="600" y="0" type="traffic_light"/>
+    
+    <node id="c21" x="0" y="200" type="traffic_light"/>
+    <node id="c22" x="200" y="200" type="traffic_light"/>
+    <node id="c23" x="400" y="200" type="traffic_light"/>
+    <node id="c24" x="600" y="200" type="traffic_light"/>
+    
+    <node id="c31" x="0" y="400" type="traffic_light"/>
+    <node id="c32" x="200" y="400" type="traffic_light"/>
+    <node id="c33" x="400" y="400" type="traffic_light"/>
+    <node id="c34" x="600" y="400" type="traffic_light"/>
+    
+    <node id="c41" x="0" y="600" type="traffic_light"/>
+    <node id="c42" x="200" y="600" type="traffic_light"/>
+    <node id="c43" x="400" y="600" type="traffic_light"/>
+    <node id="c44" x="600" y="600" type="traffic_light"/>
+    
+    <!-- Outer Nodes (Entry/Exit Points) -->
+    <!-- Left side (west) -->
+    <node id="w1" x="-200" y="0" type="priority"/>
+    <node id="w2" x="-200" y="200" type="priority"/>
+    <node id="w3" x="-200" y="400" type="priority"/>
+    <node id="w4" x="-200" y="600" type="priority"/>
+    
+    <!-- Right side (east) -->
+    <node id="e1" x="800" y="0" type="priority"/>
+    <node id="e2" x="800" y="200" type="priority"/>
+    <node id="e3" x="800" y="400" type="priority"/>
+    <node id="e4" x="800" y="600" type="priority"/>
+    
+    <!-- Bottom side (south) -->
+    <node id="s1" x="0" y="-200" type="priority"/>
+    <node id="s2" x="200" y="-200" type="priority"/>
+    <node id="s3" x="400" y="-200" type="priority"/>
+    <node id="s4" x="600" y="-200" type="priority"/>
+    
+    <!-- Top side (north) -->
+    <node id="n1" x="0" y="800" type="priority"/>
+    <node id="n2" x="200" y="800" type="priority"/>
+    <node id="n3" x="400" y="800" type="priority"/>
+    <node id="n4" x="600" y="800" type="priority"/>
+</nodes>

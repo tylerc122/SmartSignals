@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edges xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/edges_file.xsd">
+    <!-- 4x4 Grid Network Edges -->
+    
+    <!-- Horizontal connections between intersections (west to east) -->
+    <!-- Row 1 (bottom) -->
+    <edge id="c11c12" from="c11" to="c12" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c12c13" from="c12" to="c13" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c13c14" from="c13" to="c14" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Row 2 -->
+    <edge id="c21c22" from="c21" to="c22" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c22c23" from="c22" to="c23" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c23c24" from="c23" to="c24" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Row 3 -->
+    <edge id="c31c32" from="c31" to="c32" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c32c33" from="c32" to="c33" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c33c34" from="c33" to="c34" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Row 4 (top) -->
+    <edge id="c41c42" from="c41" to="c42" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c42c43" from="c42" to="c43" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c43c44" from="c43" to="c44" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Horizontal connections between intersections (east to west) -->
+    <!-- Row 1 (bottom) -->
+    <edge id="c12c11" from="c12" to="c11" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c13c12" from="c13" to="c12" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c14c13" from="c14" to="c13" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Row 2 -->
+    <edge id="c22c21" from="c22" to="c21" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c23c22" from="c23" to="c22" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c24c23" from="c24" to="c23" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Row 3 -->
+    <edge id="c32c31" from="c32" to="c31" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c33c32" from="c33" to="c32" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c34c33" from="c34" to="c33" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Row 4 (top) -->
+    <edge id="c42c41" from="c42" to="c41" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c43c42" from="c43" to="c42" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c44c43" from="c44" to="c43" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Vertical connections between intersections (south to north) -->
+    <!-- Column 1 (left) -->
+    <edge id="c11c21" from="c11" to="c21" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c21c31" from="c21" to="c31" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c31c41" from="c31" to="c41" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Column 2 -->
+    <edge id="c12c22" from="c12" to="c22" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c22c32" from="c22" to="c32" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c32c42" from="c32" to="c42" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Column 3 -->
+    <edge id="c13c23" from="c13" to="c23" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c23c33" from="c23" to="c33" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c33c43" from="c33" to="c43" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Column 4 (right) -->
+    <edge id="c14c24" from="c14" to="c24" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c24c34" from="c24" to="c34" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c34c44" from="c34" to="c44" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Vertical connections between intersections (north to south) -->
+    <!-- Column 1 (left) -->
+    <edge id="c21c11" from="c21" to="c11" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c31c21" from="c31" to="c21" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c41c31" from="c41" to="c31" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Column 2 -->
+    <edge id="c22c12" from="c22" to="c12" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c32c22" from="c32" to="c22" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c42c32" from="c42" to="c32" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Column 3 -->
+    <edge id="c23c13" from="c23" to="c13" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c33c23" from="c33" to="c23" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c43c33" from="c43" to="c33" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- Column 4 (right) -->
+    <edge id="c24c14" from="c24" to="c14" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c34c24" from="c34" to="c24" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c44c34" from="c44" to="c34" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- External connections (boundary to grid) -->
+    <!-- West boundary (entering) -->
+    <edge id="w1c11" from="w1" to="c11" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="w2c21" from="w2" to="c21" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="w3c31" from="w3" to="c31" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="w4c41" from="w4" to="c41" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- East boundary (entering) -->
+    <edge id="e1c14" from="e1" to="c14" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="e2c24" from="e2" to="c24" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="e3c34" from="e3" to="c34" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="e4c44" from="e4" to="c44" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- South boundary (entering) -->
+    <edge id="s1c11" from="s1" to="c11" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="s2c12" from="s2" to="c12" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="s3c13" from="s3" to="c13" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="s4c14" from="s4" to="c14" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- North boundary (entering) -->
+    <edge id="n1c41" from="n1" to="c41" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="n2c42" from="n2" to="c42" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="n3c43" from="n3" to="c43" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="n4c44" from="n4" to="c44" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- External connections (grid to boundary) -->
+    <!-- West boundary (exiting) -->
+    <edge id="c11w1" from="c11" to="w1" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c21w2" from="c21" to="w2" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c31w3" from="c31" to="w3" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c41w4" from="c41" to="w4" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- East boundary (exiting) -->
+    <edge id="c14e1" from="c14" to="e1" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c24e2" from="c24" to="e2" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c34e3" from="c34" to="e3" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c44e4" from="c44" to="e4" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- South boundary (exiting) -->
+    <edge id="c11s1" from="c11" to="s1" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c12s2" from="c12" to="s2" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c13s3" from="c13" to="s3" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c14s4" from="c14" to="s4" numLanes="2" speed="13.89" priority="1"/>
+    
+    <!-- North boundary (exiting) -->
+    <edge id="c41n1" from="c41" to="n1" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c42n2" from="c42" to="n2" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c43n3" from="c43" to="n3" numLanes="2" speed="13.89" priority="1"/>
+    <edge id="c44n4" from="c44" to="n4" numLanes="2" speed="13.89" priority="1"/>
+</edges>

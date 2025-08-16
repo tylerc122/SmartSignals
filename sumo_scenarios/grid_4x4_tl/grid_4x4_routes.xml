@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <!-- Vehicle Types -->
+    <vType id="car" accel="2.6" decel="4.5" sigma="0.5" length="5.0" maxSpeed="13.89" guiShape="passenger"/>
+    <vType id="bus" accel="2.0" decel="4.0" sigma="0.5" length="12.0" maxSpeed="11.11" guiShape="bus"/>
+    <vType id="emergency" accel="3.0" decel="5.0" sigma="0.0" length="5.0" maxSpeed="16.67" guiShape="emergency" vClass="emergency" speedFactor="1.5"/>
+
+    <!-- Routes: West to East (Horizontal) -->
+    <!-- Full crossing routes -->
+    <route id="W1_to_E1" edges="w1c11 c11c12 c12c13 c13c14 c14e1" color="1,0,0"/>
+    <route id="W2_to_E2" edges="w2c21 c21c22 c22c23 c23c24 c24e2" color="1,0,0"/>
+    <route id="W3_to_E3" edges="w3c31 c31c32 c32c33 c33c34 c34e3" color="1,0,0"/>
+    <route id="W4_to_E4" edges="w4c41 c41c42 c42c43 c43c44 c44e4" color="1,0,0"/>
+    
+    <!-- East to West (Horizontal) -->
+    <route id="E1_to_W1" edges="e1c14 c14c13 c13c12 c12c11 c11w1" color="0,1,0"/>
+    <route id="E2_to_W2" edges="e2c24 c24c23 c23c22 c22c21 c21w2" color="0,1,0"/>
+    <route id="E3_to_W3" edges="e3c34 c34c33 c33c32 c32c31 c31w3" color="0,1,0"/>
+    <route id="E4_to_W4" edges="e4c44 c44c43 c43c42 c42c41 c41w4" color="0,1,0"/>
+    
+    <!-- South to North (Vertical) -->
+    <route id="S1_to_N1" edges="s1c11 c11c21 c21c31 c31c41 c41n1" color="0,0,1"/>
+    <route id="S2_to_N2" edges="s2c12 c12c22 c22c32 c32c42 c42n2" color="0,0,1"/>
+    <route id="S3_to_N3" edges="s3c13 c13c23 c23c33 c33c43 c43n3" color="0,0,1"/>
+    <route id="S4_to_N4" edges="s4c14 c14c24 c24c34 c34c44 c44n4" color="0,0,1"/>
+    
+    <!-- North to South (Vertical) -->
+    <route id="N1_to_S1" edges="n1c41 c41c31 c31c21 c21c11 c11s1" color="1,1,0"/>
+    <route id="N2_to_S2" edges="n2c42 c42c32 c32c22 c22c12 c12s2" color="1,1,0"/>
+    <route id="N3_to_S3" edges="n3c43 c43c33 c33c23 c23c13 c13s3" color="1,1,0"/>
+    <route id="N4_to_S4" edges="n4c44 c44c34 c34c24 c24c14 c14s4" color="1,1,0"/>
+
+    <!-- Partial routes - West to North -->
+    <route id="W1_to_N2" edges="w1c11 c11c12 c12c22 c22c32 c32c42 c42n2" color="1,0,1"/>
+    <route id="W2_to_N3" edges="w2c21 c21c22 c22c23 c23c33 c33c43 c43n3" color="1,0,1"/>
+    
+    <!-- Partial routes - South to East -->
+    <route id="S2_to_E4" edges="s2c12 c12c22 c22c32 c32c42 c42c43 c43c44 c44e4" color="0,1,1"/>
+    <route id="S3_to_E3" edges="s3c13 c13c23 c23c33 c33c34 c34e3" color="0,1,1"/>
+    
+    <!-- Diagonal routes -->
+    <route id="W1_to_E4" edges="w1c11 c11c12 c12c13 c13c23 c23c33 c33c43 c43c44 c44e4" color="0.5,0.5,0"/>
+    <route id="S1_to_N4" edges="s1c11 c11c21 c21c22 c22c23 c23c33 c33c34 c34c44 c44n4" color="0.5,0,0.5"/>
+
+    <!-- Traffic flows -->
+    <!-- West to East -->
+    <flow id="flow_W1_E1" type="car" route="W1_to_E1" begin="0" end="3600" vehsPerHour="300"/>
+    <flow id="flow_W2_E2" type="car" route="W2_to_E2" begin="0" end="3600" vehsPerHour="250"/>
+    <flow id="flow_W3_E3" type="car" route="W3_to_E3" begin="0" end="3600" vehsPerHour="200"/>
+    <flow id="flow_W4_E4" type="car" route="W4_to_E4" begin="0" end="3600" vehsPerHour="180"/>
+    
+    <!-- East to West -->
+    <flow id="flow_E1_W1" type="car" route="E1_to_W1" begin="0" end="3600" vehsPerHour="280"/>
+    <flow id="flow_E2_W2" type="car" route="E2_to_W2" begin="0" end="3600" vehsPerHour="230"/>
+    <flow id="flow_E3_W3" type="car" route="E3_to_W3" begin="0" end="3600" vehsPerHour="190"/>
+    <flow id="flow_E4_W4" type="car" route="E4_to_W4" begin="0" end="3600" vehsPerHour="170"/>
+    
+    <!-- South to North -->
+    <flow id="flow_S1_N1" type="car" route="S1_to_N1" begin="0" end="3600" vehsPerHour="220"/>
+    <flow id="flow_S2_N2" type="car" route="S2_to_N2" begin="0" end="3600" vehsPerHour="200"/>
+    <flow id="flow_S3_N3" type="car" route="S3_to_N3" begin="0" end="3600" vehsPerHour="180"/>
+    <flow id="flow_S4_N4" type="car" route="S4_to_N4" begin="0" end="3600" vehsPerHour="150"/>
+    
+    <!-- North to South -->
+    <flow id="flow_N1_S1" type="car" route="N1_to_S1" begin="0" end="3600" vehsPerHour="210"/>
+    <flow id="flow_N2_S2" type="car" route="N2_to_S2" begin="0" end="3600" vehsPerHour="190"/>
+    <flow id="flow_N3_S3" type="car" route="N3_to_S3" begin="0" end="3600" vehsPerHour="170"/>
+    <flow id="flow_N4_S4" type="car" route="N4_to_S4" begin="0" end="3600" vehsPerHour="140"/>
+    
+    <!-- Special routes -->
+    <flow id="flow_W1_N2" type="car" route="W1_to_N2" begin="0" end="3600" vehsPerHour="100"/>
+    <flow id="flow_W2_N3" type="car" route="W2_to_N3" begin="0" end="3600" vehsPerHour="80"/>
+    <flow id="flow_S2_E4" type="car" route="S2_to_E4" begin="0" end="3600" vehsPerHour="90"/>
+    <flow id="flow_S3_E3" type="car" route="S3_to_E3" begin="0" end="3600" vehsPerHour="70"/>
+    
+    <!-- Diagonal routes -->
+    <flow id="flow_W1_E4" type="car" route="W1_to_E4" begin="0" end="3600" vehsPerHour="50"/>
+    <flow id="flow_S1_N4" type="car" route="S1_to_N4" begin="0" end="3600" vehsPerHour="40"/>
+    
+    <!-- Bus routes -->
+    <flow id="bus_route1" type="bus" route="W2_to_E2" begin="0" end="3600" period="300" departLane="0"/>
+    <flow id="bus_route2" type="bus" route="S2_to_N2" begin="60" end="3600" period="300" departLane="0"/>
+    
+    <!-- Emergency vehicles (occasional) -->
+    <flow id="emergency1" type="emergency" route="W1_to_E1" begin="300" end="3600" probability="0.01"/>
+    <flow id="emergency2" type="emergency" route="N2_to_S2" begin="600" end="3600" probability="0.01"/>
+</routes>
